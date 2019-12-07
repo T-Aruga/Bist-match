@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'jquery-rails'
+gem 'toastr-rails'
 # gem 'faker'
 
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -31,8 +32,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'rails-i18n'
 # gem 'devise-i18n'
 # gem 'devise-i18n-views'
-
-# gem "toastr-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
