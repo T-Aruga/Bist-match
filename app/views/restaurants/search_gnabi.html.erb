@@ -1,0 +1,143 @@
+<h1>店舗検索</h1>
+
+<div class="row">
+	<div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          検索条件
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group">
+            <label class="col-md-5 control-label" for="pref">都道府県</label>
+            <div class="col-md-7">
+              <%= select_tag 'pref', options_for_select({北海道: "PREF01", 宮城県: "PREF04", 埼玉県: "PREF11", 千葉県: "PREF12", 東京都: "PREF13",
+                                                    神奈川県: "PREF14", 愛知県: "PREF23", 京都府: "PREF26", 大阪府: "PREF27", 福岡県: "PREF40" }), id: 'key2'
+              %>
+            </div>
+          </div>
+
+          <div class="row"><br/>
+            <div class="form-group">
+              <div class="col-md-offset-1 col-md-4">
+                <label class="control-label" for="areacode_m">エリア</label>
+              </div>
+              <div class="col-md-6">
+                <%= select_tag 'areacode_m', options_for_select({sample1: 1, sample2: 2, sample3: 3}, 1), id: 'key3' %>
+              </div>
+              </div>
+          </div>
+
+          <div class="row"><br/>
+            <div class="col-md-12">
+              <div class="form-group text-center">
+                <input type="text" id="key" placeholder="店舗名を入力...">
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <input class="btn btn-normal" type="button" id="search" value="検索">
+          </div>
+        </div>
+      </div>
+      <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">
+        <img src="https://api.gnavi.co.jp/api/img/credit/api_265_65.gif" width="257" height="65" border="0" alt="グルメ情報検索サイト　ぐるなび">
+      </a>
+    </div>
+  </div>
+
+
+  <div class="col-md-9">
+    <%= form_for @restaurant, url: restaurants_path do |f| %>
+
+      <%= f.hidden_field :name, id: 'rest_name' %>
+      <%= f.hidden_field :pc_url, id: 'rest_url' %>
+      <%= f.hidden_field :address, id: 'rest_address' %>
+      <%= f.hidden_field :budget, id: 'rest_budget' %>
+      <%= f.hidden_field :line, id: 'rest_line' %>
+      <%= f.hidden_field :station, id: 'rest_station' %>
+      <%= f.hidden_field :walk, id: 'rest_walk' %>
+      <%= f.hidden_field :latitude, id: 'rest_latitude' %>
+      <%= f.hidden_field :longitude, id: 'rest_longitude' %>
+      <%= f.hidden_field :image_url, id: 'rest_image_url' %>
+
+      <%= button_tag type: "submit", class: "btn btn-danger", id: 'search' do %>
+        <i>チェックした店を保存する</i>
+      <% end %>&nbsp;&nbsp;※複数選択は不可
+    <% end %>
+
+    <hr>
+
+    <table id="table" class="table"><br/>
+      <thead>
+          <tr>
+            <th scope="col">店舗名</th>
+            <th scope="col">住所</th>
+            <th scope="col">Check</th>
+          </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<script>
+$(function(){
+  var url = "https://api.gnavi.co.jp/RestSearchAPI/v3/"
+  var params = {
+    keyid: "<%= ENV['GNABI_API_KEY'] %>",
+    name: "",
+    pref: "",
+    areacode_m: "",
+  };
+  var counts = []
+  var showResult = function(result){
+    result.rest.map(function(item, index){
+      $("#tbody").append(`<tr><td>${item.name}</td><td>${item.address}</td><td><input type="checkbox" data-id=${index} id="checkbox"></td></tr>`);
+        item.num = index;
+        counts.push(item);
+    });
+  }
+  $(document).on("click", "#search", function(){
+    $("#tbody").empty();
+    params.name = $("#key").val();
+    $.getJSON(url, params, function(result){
+      showResult(result);
+    });
+  });
+
+  $(document).on("change", "#checkbox", function(){
+    var selectbox = $('#checkbox:checked').data('id');
+    $("#rest_name").val("");
+    $("#rest_url").val("");
+    $("#rest_name").val("");
+    $("#rest_url").val("");
+    $("#rest_image_url1").val("");
+    $("#rest_image_url2").val("");
+    $("#rest_address").val("");
+    $("#rest_budget").val("");
+    $("#rest_line").val("");
+    $("#rest_walk").val("");
+    $("#rest_latitude").val("");
+    $("#rest_longitude").val("");
+    $.each(counts, function(index, count){
+      if (selectbox == count.num){
+        $("#rest_name").val(count.name);
+        $("#rest_url").val(count.url);
+        $("#rest_image_url").val(count.image_url.shop_image1);
+        $("#rest_address").val(count.address);
+        $("#rest_budget").val(count.budget);
+        $("#rest_line").val(count.access.line);
+        $("#rest_station").val(count.access.station);
+        $("#rest_walk").val(count.access.walk);
+        $("#rest_latitude").val(count.latitude);
+        $("#rest_longitude").val(count.longitude);
+      }
+    });
+  });
+});
+</script>

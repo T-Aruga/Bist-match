@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require activestorage
 //= require toastr
+//= require cocoon
 //= require_tree .

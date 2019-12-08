@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_100521) do
+ActiveRecord::Schema.define(version: 2019_12_08_141212) do
+
+  create_table "photos", force: :cascade do |t|
+    t.integer "restaurant_id"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
+    t.integer "budget"
+    t.string "line"
+    t.string "station"
+    t.integer "walk"
+    t.string "pc_url"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

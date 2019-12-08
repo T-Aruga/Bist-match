@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'jquery-rails'
 gem 'toastr-rails'
+
+gem 'dotenv-rails'
 # gem 'faker'
 
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -22,8 +24,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # gem 'kaminari','~> 1.1.1'
 
-# gem "refile", require: "refile/rails", github: 'manfe/refile'
-# gem "refile-mini_magick"
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem 'cocoon'
 # gem 'counter_culture', '~> 1.8'
 
 # gem 'ransack'
