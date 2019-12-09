@@ -17,6 +17,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "toastr";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 body {
   color: #565a5c;
@@ -210,4 +212,39 @@ a {
   text-align: center;
   width: 1.25em;
   color: #00A699;
+}
+
+
+// SIDEBAR
+.sidebar-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.sidebar-item {
+  padding: 10px 0;
+  font-size: 16px;
+  color: #82888a;
+}
+
+.sidebar-link {
+  color: #82888a;
+  text-decoration: none;
+
+    &:hover {
+      color: #CACCCD;
+      text-decoration: none;
+    }
+
+    &:focus {
+      color: #CACCCD;
+      text-decoration: none;
+    }
+}
+
+
+.active.sidebar-link {
+  color: #565A5C;
+  font-weight: bold;
+  text-decoration: none;
 }

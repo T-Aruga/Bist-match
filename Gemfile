@@ -20,7 +20,7 @@ gem 'dotenv-rails'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'paranoia'
-# gem 'font-awesome-sass', '~> 5.4.1'
+gem 'font-awesome-sass', '~> 5.4.1'
 
 # gem 'kaminari','~> 1.1.1'
 
