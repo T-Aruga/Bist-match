@@ -1,0 +1,4 @@
+$('#photos').html("<%= j render 'photos_prev' %>")
+<% if @user.image_id.blank? %>
+  $('#photo_check').hide();
+<% end %>

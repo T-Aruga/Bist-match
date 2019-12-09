@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :photos, dependent: :destroy
+  attachment :image
 
 
   enum sex: { 男性: 0, 女性: 1 }

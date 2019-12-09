@@ -1,0 +1,14 @@
+<% if @user.image_id.blank? %>
+  <br/><br/>
+
+  <div class="row">
+      <div class="col-md-offset-4 col-md-4">
+        <div class="panel panel-default">
+        <div class="panel-heading text-center">Preview</div>
+          <div class="panel-body">
+              <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "no_image.png", size:'150x200', id: :img_prev %>
+          </div>
+        </div>
+      </div>
+  </div>
+<% end %>

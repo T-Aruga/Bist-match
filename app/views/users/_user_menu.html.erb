@@ -19,7 +19,7 @@
       <li class="sidebar-item">
         <%= link_to "画像アップロード", photo_upload_user_path, class: "sidebar-link active" %>
         <% if !@user.image_id.blank? %>
-          <span class="pull-right text-babu"><i class="fas fa-check"></i></span>
+          <span id="photo_check" class="pull-right text-babu"><i class="fas fa-check"></i></span>
         <% end %>
       </li>
       <li class="sidebar-item">
