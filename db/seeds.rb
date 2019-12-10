@@ -35,3 +35,15 @@ User.create!(
     jenre_id: 2,
     active: 1
 )
+
+
+# 地域情報
+
+arrAreas = ["新宿", "渋谷", "池袋", "恵比寿", "東京・日本橋", "六本木", "銀座", "新梅・汐留", "上野・浅草", "原宿・青山・表参道", "赤坂・永田町", "秋葉原・神田", "目黒・五反田"]
+
+for i in arrAreas do
+
+  Area.create!(
+      name: i
+  )
+end
