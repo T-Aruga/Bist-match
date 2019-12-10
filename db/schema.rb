@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_035721) do
+ActiveRecord::Schema.define(version: 2019_12_10_042156) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,28 @@ ActiveRecord::Schema.define(version: 2019_12_10_035721) do
   create_table "photos", force: :cascade do |t|
     t.integer "restaurant_id"
     t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "title"
+    t.text "summary"
+    t.integer "price"
+    t.integer "member"
+    t.time "start_time"
+    t.time "end_time"
+    t.date "plan_date"
+    t.datetime "deadline"
+    t.text "requirement"
+    t.integer "restaurant_id"
+    t.integer "genre_id"
+    t.integer "user_id"
+    t.integer "area_id"
+    t.integer "period_time"
+    t.integer "status"
+    t.boolean "is_holiday"
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
