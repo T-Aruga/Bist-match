@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     member do
       get 'profile'
       get 'description'
-      get 'favolite_store'
+      get 'favorite_store'
       get 'photo_upload'
       get 'exit'
     end

@@ -8,7 +8,9 @@
     <ul class="sidebar-list">
       <li class="sidebar-item">
         <%= link_to "プロフィール", profile_user_path, class: "sidebar-link active" %>
+        <% if !@user.fullname.blank? && !@user.email.blank? %>
         <span class="pull-right text-babu"><i class="fas fa-check"></i></span>
+        <% end %>
       </li>
       <li class="sidebar-item">
         <%= link_to "自己紹介", description_user_path, class: "sidebar-link active" %>
@@ -23,8 +25,8 @@
         <% end %>
       </li>
       <li class="sidebar-item">
-        <%= link_to "お気に入り", favolite_store_user_path, class: "sidebar-link active" %>
-        <% if !@user.favorite_store.blank? %>
+        <%= link_to "お気に入り", favorite_store_user_path, class: "sidebar-link active" %>
+        <% if !@user.favorite_store.blank? && !@user.jenre_id.blank? %>
           <span class="pull-right text-babu"><i class="fas fa-check"></i></span>
         <% end %>
       </li>
@@ -32,5 +34,11 @@
   </div>
 </div>
 
-
 <hr/>
+
+<% is_ready = !@user.active && !@user.fullname.blank? && !@user.email.blank? && !@user.description.blank? && !@user.image_id.blank? && !@user.favorite_store.blank? && !@user.jenre_id.blank? %>
+
+<%= form_for @user do |f| %>
+  <%= f.hidden_field :active, value: true %>
+  <%= f.submit "プロフィールを公開する", id: "publish_button", class: "btn btn-normal btn-block", disabled: !is_ready %>
+<% end %>

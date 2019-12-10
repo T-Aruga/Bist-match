@@ -6,6 +6,8 @@ class AddtoFieldsToUser < ActiveRecord::Migration[5.2]
     add_column :users, :sex, :integer, default: 0, null: false
     add_column :users, :age, :integer
     add_column :users, :favorite_store, :string
+    add_column :users, :job, :string
+    add_column :users, :jenre_id, :integer
     add_column :users, :active, :boolean, default: false, null: false
   end
 end
