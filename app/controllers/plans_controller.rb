@@ -31,7 +31,6 @@ class PlansController < ApplicationController
   end
 
   def photo_upload
-    @photo = @plan.photos.build
     @photos = @plan.photos
   end
 

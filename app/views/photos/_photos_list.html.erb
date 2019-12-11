@@ -1,4 +1,5 @@
 <% if @photos.count > 0 %>
+
   <br/><br/>
 
   <div class="row">
@@ -10,7 +11,7 @@
           </div>
           <div class="panel-body">
             <span class="pull-right">
-              <%= link_to root_path, data: {confirm: "Are you sure?"} do %>
+              <%= link_to plan_photo_path(photo.plan_id, photo), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
                 <i class="fas fa-trash fa-lg" aria-hidden="true"></i>
               <% end %>
             </span>
@@ -19,4 +20,4 @@
       </div>
     <% end %>
   </div>
-  <% end %>
+<% end %>
