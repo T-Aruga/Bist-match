@@ -1,7 +1,7 @@
 class PlansController < ApplicationController
 
   before_action  :set_plan, except: [:new, :index, :create]
-  before_action  :set_rest, only: [:new, :create]
+  before_action  :set_rest, only: [:new, :create, :update, :rest_info]
 
   def index
   end

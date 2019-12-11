@@ -16,6 +16,17 @@ class RestaurantsController < ApplicationController
     end
   end
 
+
+  def update
+    @restaurant = Restaurant.where(user_id: current_user.id).order(id: :desc).first
+    if @restaurant.update(rest_params)
+      flash[:notice] = "店舗情報を保存しました"
+    else
+      flash.now[:alert] = "店舗情報を保存出来ませんでした..."
+    end
+    redirect_back(fallback_location: request.referer)
+  end
+
   private
 
   def rest_params
