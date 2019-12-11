@@ -2,6 +2,7 @@
   <div class="col-md-3">
     <%= render 'plan_menu' %>
   </div>
+
   <div class="col-md-9">
     <div class="panel panel-default">
 
@@ -26,14 +27,14 @@
                 <div class="col-md-6">
                   <div class="time-group">
                     <label>開始時間</label>
-                    <%=  f.time_select :start_time, include_blank: true, ignore_data:true,  minute_step: 15, class: 'time-box form-control' %>
+                    <%=  f.time_select :start_time, include_blank: true, ignore_data: true,  minute_step: 15, class: 'time-box form-control' %>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="time-group">
                     <label>終了時間</label>
-                    <%=  f.time_select :end_time, include_blank: true, ignore_data:true, minute_step: 15, class: 'time-box form-control' %>
+                    <%=  f.time_select :end_time, include_blank: true, ignore_data: true, minute_step: 15, class: 'time-box form-control' %>
                   </div>
                 </div>
               </div>
@@ -50,9 +51,9 @@
                 </div>
               </div>
 
-
-            <div><%= f.submit "保存", class: "btn btn-normal" %></div>
-
+              <div class="text-center">
+                <%= f.submit "保存", class: "btn btn-normal text-center" %>
+              </div>
           <% end %>
         </div>
       </div>

@@ -5,8 +5,8 @@ class CreatePlans < ActiveRecord::Migration[5.2]
       t.text :summary
       t.integer :price
       t.integer :member
-      t.time :start_time
-      t.time :end_time
+      t.datetime :start_time
+      t.datetime :end_time
       t.date :plan_date
       t.date :deadline
       t.text :requirement
