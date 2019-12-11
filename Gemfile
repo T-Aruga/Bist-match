@@ -27,7 +27,7 @@ gem 'font-awesome-sass', '~> 5.4.1'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'cocoon'
-# gem 'counter_culture', '~> 1.8'
+gem 'jquery-ui-rails', '~> 5.0'
 
 # gem 'ransack'
 # gem 'momentjs-rails'

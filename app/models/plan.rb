@@ -10,4 +10,5 @@ class Plan < ApplicationRecord
 
 
   enum status: { 募集終了: 0, 募集中: 1 }
+  enum period_time: { 朝: 0, ランチタイム: 1, 夕方・夜:2 }
 end

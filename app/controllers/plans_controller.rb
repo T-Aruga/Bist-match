@@ -44,7 +44,11 @@ class PlansController < ApplicationController
 
 
   def update
-    if @plan.update(plan_params)
+
+    new_params = plan_params
+    new_params = plan_params.merge(active: true) if is_ready_plan
+
+    if @plan.update(new_params)
       flash[:notice] = "編集内容を保存しました"
     else
       flash[:alert] = "編集内容の保存に失敗しました..."
@@ -69,6 +73,13 @@ class PlansController < ApplicationController
     def plan_params
       params.require(:plan).permit(:title, :summary, :restaurant_id, :price, :member, :start_time, :end_time, :plan_date,
                                    :deadline, :requirement, :jenre_id, :user_id, :area_id, :period_time, :status, :is_holiday, :active)
+    end
+
+    def is_ready_plan
+      !@plan.active && !@plan.price.blank? && !@plan.member.blank? && !@plan.jenre_id.blank? && !@plan.status.blank? && !@plan.area_id.blank? &&
+      !@plan.restaurant.name.blank? && !@plan.restaurant.address.blank? && !@plan.restaurant.line.blank? && !@plan.restaurant.station.blank? &&
+      !@plan.restaurant.walk.blank? && !@plan.summary.blank? && !@plan.title.blank? && !@plan.requirement.blank? && !@plan.photos.blank? &&
+      !@plan.plan_date.blank? && !@plan.start_time.blank? && !@plan.end_time.blank? && !@plan.deadline.blank?
     end
 
 

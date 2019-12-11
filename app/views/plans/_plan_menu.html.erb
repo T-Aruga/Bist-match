@@ -1,23 +1,53 @@
-<ul class="sidebar-list">
-  <li class="sidebar-item">
-    <%= link_to "プラン情報", listing_plan_path, class: "sidebar-link active" %>
-    <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
-  </li>
-  <li class="sidebar-item">
-    <%= link_to "プラン店舗情報", rest_info_plan_path, class: "sidebar-link active" %>
-      <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
-  </li>
-  <li class="sidebar-item">
-    <%= link_to "プラン紹介", description_plan_path, class: "sidebar-link active" %>
-      <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
-  </li>
-  <li class="sidebar-item">
-    <%= link_to "イメージ画像", photo_upload_plan_path, class: "sidebar-link active" %>
-      <span id="photo_check" class="pull-right text-babu"><i class="fa fa-check"></i></span>
-  </li>
-  <li class="sidebar-item">
-    <%= link_to "プラン日時", time_info_plan_path, class: "sidebar-link active" %>
-    <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
-  </li>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      登録情報リスト
+  </div>
+
+  <div class="panel-body">
+    <ul class="sidebar-list">
+      <li class="sidebar-item">
+        <%= link_to "プラン情報", listing_plan_path, class: "sidebar-link active" %>
+        <% if !@plan.price.blank? && !@plan.member.blank? && !@plan.jenre_id.blank? && !@plan.status.blank? && !@plan.area_id.blank? %>
+          <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
+        <% end %>
+      </li>
+      <li class="sidebar-item">
+        <%= link_to "プラン店舗情報", rest_info_plan_path, class: "sidebar-link active" %>
+        <% if !@plan.restaurant.name.blank? && !@plan.restaurant.address.blank? && !@plan.restaurant.line.blank? && !@plan.restaurant.station.blank? && !@plan.restaurant.walk.blank? %>
+          <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
+        <% end %>
+      </li>
+      <li class="sidebar-item">
+        <%= link_to "プラン紹介", description_plan_path, class: "sidebar-link active" %>
+        <% if !@plan.summary.blank? && !@plan.title.blank? && !@plan.requirement.blank? %>
+          <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
+        <% end %>
+      </li>
+      <li class="sidebar-item">
+        <%= link_to "イメージ画像", photo_upload_plan_path, class: "sidebar-link active" %>
+        <% if !@plan.photos.blank? %>
+          <span id="photo_check" class="pull-right text-babu"><i class="fa fa-check"></i></span>
+        <% end %>
+      </li>
+      <li class="sidebar-item">
+        <%= link_to "プラン日時", time_info_plan_path, class: "sidebar-link active" %>
+        <% if !@plan.plan_date.blank? && !@plan.start_time.blank? && !@plan.end_time.blank? && !@plan.deadline.blank? %>
+          <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <hr/>
+
+<% is_ready = !@plan.active && !@plan.price.blank? && !@plan.member.blank? && !@plan.jenre_id.blank? && !@plan.status.blank? && !@plan.area_id.blank? &&
+              !@plan.restaurant.name.blank? && !@plan.restaurant.address.blank? && !@plan.restaurant.line.blank? && !@plan.restaurant.station.blank? &&
+              !@plan.restaurant.walk.blank? && !@plan.summary.blank? && !@plan.title.blank? && !@plan.requirement.blank? && !@plan.photos.blank? &&
+              !@plan.plan_date.blank? && !@plan.start_time.blank? && !@plan.end_time.blank? && !@plan.deadline.blank?
+ %>
+
+<%= form_for @plan do |f| %>
+  <%= f.hidden_field :active, value: true %>
+  <%= f.submit "プランを公開する", id: "publish_button", class: "btn btn-normal btn-block", disabled: !is_ready %>
+<% end %>

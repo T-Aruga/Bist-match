@@ -7,8 +7,8 @@ class CreatePlans < ActiveRecord::Migration[5.2]
       t.integer :member
       t.time :start_time
       t.time :end_time
-      t.datetime :plan_date
-      t.datetime :deadline
+      t.date :plan_date
+      t.date :deadline
       t.text :requirement
       t.integer :restaurant_id
       t.integer :jenre_id
