@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_042156) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.integer "restaurant_id"
+    t.integer "plan_id"
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,17 +39,17 @@ ActiveRecord::Schema.define(version: 2019_12_10_042156) do
     t.integer "member"
     t.time "start_time"
     t.time "end_time"
-    t.date "plan_date"
+    t.datetime "plan_date"
     t.datetime "deadline"
     t.text "requirement"
     t.integer "restaurant_id"
-    t.integer "genre_id"
+    t.integer "jenre_id"
     t.integer "user_id"
     t.integer "area_id"
     t.integer "period_time"
     t.integer "status"
-    t.boolean "is_holiday"
-    t.boolean "active"
+    t.boolean "is_holiday", default: false, null: false
+    t.boolean "active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_042156) do
     t.integer "walk"
     t.string "pc_url"
     t.string "image_url"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

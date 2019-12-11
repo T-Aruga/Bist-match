@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attachment :image
 
+  has_many :plans, dependent: :destroy
+
   belongs_to :jenre
 
 

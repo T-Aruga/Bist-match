@@ -26,6 +26,7 @@ module BistMatch
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.i18n.available_locales = [:en, :ja]
     config.time_zone = "Tokyo"
+    config.active_record.time_zone_aware_types = [:datetime, :time]
 
     # Don't generate system test files.
     config.generators.system_tests = nil

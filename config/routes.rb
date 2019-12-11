@@ -15,6 +15,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :plans, except: [:edit] do
+    member do
+      get 'listing'
+      get 'rest_info'
+      get 'description'
+      get 'photo_upload'
+      get 'time_info'
+    end
+    resources :photos, only: [:update, :destroy]
+  end
+
 
   resources :restaurants, only: [:create]
   get '/search_gnabi' => 'restaurants#search_gnabi'

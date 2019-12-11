@@ -7,11 +7,12 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(rest_params)
+    @restaurant.user_id = current_user.id
     if @restaurant.save
-      redirect_to root_path, notice: "店舗情報を保存しました！"
+      redirect_to new_plan_path, notice: "店舗情報を保存しました！"
     else
       flash.now[:alert] = "店舗情報の保存に失敗しました"
-      render search_gnabi_path
+      render :search_gnabi
     end
   end
 

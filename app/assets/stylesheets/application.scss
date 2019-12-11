@@ -30,6 +30,12 @@ a {
   color: #00A699;
 }
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .container {
   width: 80%;
 }
@@ -132,6 +138,14 @@ a {
   font-weight: 400;
 }
 
+.panel-heading.preview {
+  padding: 0;
+}
+
+.panel-heading.preview img {
+  width: 100%;
+}
+
 .row-space-1 {
   margin-top: 6px;
   margin-bottom: 6px;
@@ -145,6 +159,11 @@ a {
 .row-space-3 {
   margin-top: 24px;
   margin-bottom: 24px;
+}
+
+.row-space-4 {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .description {

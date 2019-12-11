@@ -11,6 +11,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.integer :walk
       t.string :pc_url
       t.string :image_url
+      t.integer :user_id
 
       t.timestamps
     end
