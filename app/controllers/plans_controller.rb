@@ -1,7 +1,7 @@
 class PlansController < ApplicationController
 
   before_action  :set_plan, except: [:new, :index, :create]
-  before_action  :set_rest, only: [:new, :create, :update, :rest_info]
+  before_action  :set_rest, only: [:new, :create]
 
   def index
   end
@@ -12,7 +12,6 @@ class PlansController < ApplicationController
 
   def create
     @plan = current_user.plans.build(plan_params)
-    @plan.user_id = current_user.id
     @plan.restaurant_id = @restaurant.id
     if @plan.save
       redirect_to listing_plan_path(@plan), notice: "プランを新規作成しました！"
@@ -22,12 +21,17 @@ class PlansController < ApplicationController
     end
   end
 
+
+  def show
+    @photos = @plan.photos
+  end
+
   def listing
 
   end
 
   def rest_info
-
+    @restaurant = Restaurant.find_by(id: @plan.restaurant_id)
   end
 
   def photo_upload
@@ -56,8 +60,6 @@ class PlansController < ApplicationController
     redirect_back(fallback_location: request.referer)
   end
 
-  def show
-  end
 
 
   private
@@ -67,7 +69,7 @@ class PlansController < ApplicationController
     end
 
     def set_rest
-      @restaurant = Restaurant.where(user_id: current_user.id).order(id: :desc).first
+      @restaurant = Restaurant.where(user_id: current_user.id).last
     end
 
     def plan_params

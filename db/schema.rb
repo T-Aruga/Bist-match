@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 2019_12_10_042156) do
     t.date "plan_date"
     t.date "deadline"
     t.text "requirement"
-    t.integer "restaurant_id"
-    t.integer "jenre_id"
-    t.integer "user_id"
-    t.integer "area_id"
+    t.integer "restaurant_id", null: false
+    t.integer "jenre_id", default: 1, null: false
+    t.integer "user_id", null: false
+    t.integer "area_id", default: 1, null: false
     t.integer "period_time"
     t.integer "status"
     t.boolean "is_holiday", default: false, null: false

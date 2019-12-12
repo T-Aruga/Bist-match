@@ -1,4 +1,4 @@
-<% if @photos.count > 0 %>
+<% if @photos.length > 0 %>
 
   <br/><br/>
 
@@ -20,4 +20,11 @@
       </div>
     <% end %>
   </div>
+
+  <% else %>
+
+  <div class="text-center row-space-3">
+      <h4>投稿画像はありません</h4>
+  </div>
+
 <% end %>

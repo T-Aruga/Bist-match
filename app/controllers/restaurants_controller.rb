@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
 
 
   def update
-    @restaurant = Restaurant.where(user_id: current_user.id).order(id: :desc).first
+    @restaurant = Restaurant.where(user_id: current_user.id).last
     if @restaurant.update(rest_params)
       flash[:notice] = "店舗情報を保存しました"
     else

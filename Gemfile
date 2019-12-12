@@ -28,6 +28,7 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'cocoon'
 gem 'jquery-ui-rails', '~> 5.0'
+gem 'geocoder', '~> 1.4'
 
 # gem 'ransack'
 # gem 'momentjs-rails'
