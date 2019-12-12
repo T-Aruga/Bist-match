@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get 'time_info'
     end
     resources :photos, only: [:update, :destroy]
+    resources :reservations, only: [:create]
   end
 
 

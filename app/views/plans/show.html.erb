@@ -20,6 +20,7 @@
         <ul class="cp_tag01">
           <li><p class="btn-border side-space-1"><%= "募集中" %></p></li>
           <li><a href="#"><%= @plan.jenre.name %></a></li>
+          <li><a href="#"><%= @plan.area.name %></a></li>
         </ul>
 
       </div>
@@ -50,6 +51,7 @@
               <li>開催場所: <%= @plan.restaurant.name %></li>
               <li>募集人数: <%= @plan.member %>人</li>
               <li>料金(Host Fee): <%= @plan.price.to_s(:delimited) %>円</li>
+              <li>平均予算: <%= @plan.restaurant.budget.to_s(:delimited) %>円</li>
             </ul>
           </div>
           <div class="col-md-7">
@@ -100,6 +102,11 @@
     <!-- GOOGLE MAP -->
     <div class="row">
       <h3>店舗情報</h3>
+      <ul class="plan-info">
+        <li><a href="<%= @plan.restaurant.pc_url %>"><%= @plan.restaurant.name %></a></li>
+        <li><%= @plan.restaurant.address %></li>
+        <li><%= @plan.restaurant.line %><%= @plan.restaurant.station %>から徒歩<%= @plan.restaurant.walk %>分</li>
+      </ul>
       <div id="map" style="width: 100%; height: 400px"></div>
 
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP_API_KEY'] %>&language=ja&callback=initialize" async defer></script>
@@ -131,8 +138,8 @@
 
     <!-- NEAR BY PLANS -->
     <div class="row">
-      <h3>近くで募集中のプラン</h3>
-      <% for rest in @plan.restaurant.nearbys(10) do %>
+      <h3>近くで募集中のプラン</h3><br>
+      <% @plan.restaurant.nearbys(10).each do |rest| %>
         <% if Plan.exists?(restaurant_id: rest.id, status: 1) %>
           <% rest.plans.each do |plan| %>
             <div class="col-md-4">
@@ -151,5 +158,12 @@
     </div>
 
   </div>
+
+  <!-- RIGHT AREA -->
+  <div class="col-md-4">
+    <!-- Reservation Form -->
+    <%= render 'reservations/form' %>
+  </div>
+</div>
 
 </div>

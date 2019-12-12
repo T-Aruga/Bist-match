@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span><i class="fa fa-bolt" style="color: #ffb400"></i> ¥<%= @plan.price.to_s(:delimited) %></span>
+    <span class="pull-right">料金</span>
+  </div>
+  <div class="panel-body">
+    <%= form_for([@plan, @plan.reservations.new]) do |f| %>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label>ホストへの支払い</label>
+          <%= f.text_field :price, placeholder: "Host Fee...", class: "form-control" %>
+        </div>
+      </div>
+
+      <br/>
+
+      <%= f.submit "このプランに参加する", class: "btn btn-normal btn-block" %>
+    <% end %>
+  </div>
+</div>

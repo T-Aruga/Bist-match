@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_042156) do
+ActiveRecord::Schema.define(version: 2019_12_12_162018) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2019_12_10_042156) do
     t.integer "status"
     t.boolean "is_holiday", default: false, null: false
     t.boolean "active", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "price"
+    t.integer "user_id"
+    t.integer "plan_id"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

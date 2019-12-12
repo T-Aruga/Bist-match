@@ -1,6 +1,6 @@
 class Plan < ApplicationRecord
 
-
+  has_many :reservations, dependent: :destroy
   has_many :photos, dependent: :destroy
   accepts_attachments_for :photos, attachment: :image
 
