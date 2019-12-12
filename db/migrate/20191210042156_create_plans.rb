@@ -15,7 +15,7 @@ class CreatePlans < ActiveRecord::Migration[5.2]
       t.integer :user_id, null: false
       t.integer :area_id, default: 1, null: false
       t.integer :period_time
-      t.integer :status
+      t.integer :status, default: 0
       t.boolean :is_holiday, default: false, null: false
       t.boolean :active, default: false, null: false
 

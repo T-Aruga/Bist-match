@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
-  belongs_to :jenre
+  # belongs_to :jenre
 
 
   enum sex: { 男性: 0, 女性: 1 }

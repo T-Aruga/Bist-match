@@ -4,7 +4,7 @@ class CreateReservations < ActiveRecord::Migration[5.2]
       t.integer :price
       t.integer :user_id
       t.integer :plan_id
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end

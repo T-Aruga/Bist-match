@@ -145,10 +145,12 @@
             <div class="col-md-4">
               <div class="panel panel-default">
                 <div class="panel-heading preview">
+                <%= link_to plan do %>
                   <%= image_tag "#{rest.image_url}", size: '200x200'  %>
+                <% end %>
                 </div>
                 <div class="panel-body">
-                  <%= plan.title %>
+                  <%= link_to plan.title, plan %>
                 </div>
               </div>
             </div>
