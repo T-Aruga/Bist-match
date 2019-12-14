@@ -11,6 +11,7 @@ class ReservationsController < ApplicationController
     else
       @reservation = current_user.reservations.build(reservation_params)
       @reservation.plan_id = plan.id
+      @reservation.status = 1
       @reservation.save
 
       flash[:notice] = "プランに参加希望をしました"
