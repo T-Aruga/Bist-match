@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_162018) do
     t.integer "user_id", null: false
     t.integer "area_id", default: 1, null: false
     t.integer "period_time"
-    t.integer "status"
+    t.integer "status", default: 0
     t.boolean "is_holiday", default: false, null: false
     t.boolean "active", default: false, null: false
     t.datetime "created_at", null: false
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_162018) do
     t.integer "age"
     t.string "favorite_store"
     t.string "job"
-    t.integer "jenre_id"
+    t.integer "jenre_id", default: 1, null: false
     t.boolean "active", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

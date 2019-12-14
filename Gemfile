@@ -16,7 +16,7 @@ gem 'jquery-rails'
 gem 'toastr-rails'
 
 gem 'dotenv-rails'
-# gem 'faker'
+gem 'faker'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'paranoia'

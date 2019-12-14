@@ -9,11 +9,11 @@
 
 # ジャンル情報
 
-arrjobs = ["和食", "寿司", "カフェ", "ラーメン・そば・うどん", "焼き鳥・串焼き", "焼肉", "スイーツ",
+arrjenres = ["和食", "寿司", "カフェ", "ラーメン・そば・うどん", "焼き鳥・串焼き", "焼肉", "スイーツ",
             "ステーキ・ハンバーグ", "洋食", "パスタ・ピザ", "ハンバーガー", "フレンチ", "イタリアン",
              "スペイン料理", "中華料理", "韓国料理", "エスニック料理", "カレー", "鍋料理", "居酒屋・ダイニングバー"]
 
-for i in arrjobs do
+for i in arrjenres do
 
   Jenre.create!(
       name: i
@@ -35,6 +35,23 @@ User.create!(
     jenre_id: 2,
     active: 1
 )
+
+10.times do |n|
+	User.create!(
+		fullname: Faker::Name.name,
+    email: Faker::Internet.unique.free_email,
+    password: 'aaaaaa',
+    phone_number: '09012349876',
+    description: Faker::Lorem.sentence(word_count: 20),
+    age: rand(18..50),
+    sex: rand(0..1),
+    favorite_store: Faker::Company.name,
+    job: Faker::Job.title,
+    jenre_id: rand(1..20),
+    active: 1
+	)
+end
+
 
 
 # 地域情報

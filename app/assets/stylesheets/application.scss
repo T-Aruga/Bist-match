@@ -52,14 +52,39 @@ a {
 
 // NAVBARS
 .navbar-default {
-  background-color: #ffffff;
+  background-color: #232530;
 }
 
 .navbar-default .navbar-brand {
-  color: rgb(22, 25, 231);
+  color: white;
   font-size: 2em;
   font-weight: 400;
+
+  &:hover {
+    color: #b69e4f;
+    background-color: transparent;
+  }
+
+  &:focus {
+    color: #b69e4f;
+    background-color: transparent;
+  }
 }
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+
+    &:hover {
+      color: #b69e4f;
+      background-color: transparent;
+    }
+
+    &:focus {
+      color: #b69e4f;
+      background-color: transparent;
+    }
+}
+
 
 // TAGS
 
@@ -375,6 +400,10 @@ a {
     }
 }
 
+.image-wrapper {
+  text-align: center;
+}
+
 // PlAN INFOMATION SHOW
 
 .image_size {
@@ -387,5 +416,10 @@ a {
 
 .plan-info li {
   margin-bottom: 10px;
+  list-style-type: none;
+}
+
+.user-info li {
+  margin-bottom: 4px;
   list-style-type: none;
 }
