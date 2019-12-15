@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @plans = @user.plans
   end
 
   def update

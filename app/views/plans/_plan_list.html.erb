@@ -1,0 +1,14 @@
+<% plans.each do |plan| %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading preview">
+          <%= image_tag "#{plan.restaurant.image_url}", size: '200x200'  %>
+        </div>
+        <div class="panel-body">
+          <%= link_to plan.title, plan %><br/>
+          ¥<%= plan.price %>&nbsp;&nbsp;
+          <%= plan.status %>
+        </div>
+      </div>
+    </div>
+<% end %>
