@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @plans = @user.plans
+    @guest_reviews = Review.where(type: "GuestReview", host_id: @user.id)
   end
 
   def update

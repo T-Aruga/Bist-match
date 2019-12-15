@@ -24,6 +24,7 @@ class PlansController < ApplicationController
 
   def show
     @photos = @plan.photos
+    @guest_reviews = @plan.guest_reviews
   end
 
   def listing
