@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
+  has_many :guest_reviews, class_name: "GuestReview", foreign_key: "guest_id"
+  has_many :host_reviews, class_name: "HostReview", foreign_key: "host_id"
+
+
   belongs_to :jenre
 
 
