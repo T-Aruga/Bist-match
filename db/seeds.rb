@@ -36,6 +36,20 @@ User.create!(
     active: 1
 )
 
+User.create!(
+    fullname: "Adam Smith",
+    email: 'sample@gmail.com',
+    password: 'aaaaaa',
+    phone_number: '09012349876',
+    description: 'アダムです！皆さん、一緒に美味しいもの食べに行きましょう!',
+    age: 30,
+    sex: 0,
+    favorite_store: '叙々苑',
+    job: 'デザイナー',
+    jenre_id: 6,
+    active: 1
+)
+
 10.times do |n|
 	User.create!(
 		fullname: Faker::Name.name,

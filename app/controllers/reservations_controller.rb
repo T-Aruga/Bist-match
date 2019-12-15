@@ -19,6 +19,14 @@ class ReservationsController < ApplicationController
     redirect_to plan
   end
 
+  def your_reservation
+    @plans = current_user.plans
+  end
+
+  def your_entry
+    @reservations = current_user.reservations.order(plan_date: :asc)
+  end
+
 
   private
 

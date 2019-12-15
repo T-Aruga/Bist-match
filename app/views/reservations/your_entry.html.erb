@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-3">
+    <ul class="sidebar-list">
+      <li class="sidebar-item"><%= link_to "ホストプラン一覧", your_plans_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "参加希望一覧", your_reservation_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "参加プラン一覧", your_entry_path, class: "sidebar-link active" %></li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        参加プラン一覧
+      </div>
+      <div class="panel-body">
+
+        <% @reservations.each do |reservation| %>
+          <div class="row">
+            <div class="col-md-2">
+              <%= reservation.plan.plan_date %>
+            </div>
+            <div class="col-md-2">
+              <%= link_to plan_path(reservation.plan) do %>
+                <%= image_tag "#{reservation.plan.restaurant.image_url}", size: '100x100' %>
+              <% end %>
+            </div>
+            <div class="col-md-5">
+              <%= link_to reservation.plan.title, plan_path(reservation.plan) %><br/><br/>
+              <span>
+                <%= attachment_image_tag reservation.plan.user, :image, :fill, 40, 40, fallback: "no_image.png", size:'40x40', class: "img-circle" %>
+                <%= link_to user_path(reservation.plan.user) do %>
+                    <%= reservation.plan.user.fullname %>
+                <% end %>
+              </span>
+            </div>
+            <div class="col-md-3 text-right">
+              <%= reservation.status %>
+            </div>
+          </div>
+          <hr/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

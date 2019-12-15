@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     resources :reservations, only: [:create]
   end
 
+  get '/your_plans' => 'plans#your_plans'
+  get '/your_reservation' => 'reservations#your_reservation'
+  get '/your_entry' => 'reservations#your_entry'
 
   resources :restaurants, only: [:create, :update]
   get '/search_gnabi' => 'restaurants#search_gnabi'
