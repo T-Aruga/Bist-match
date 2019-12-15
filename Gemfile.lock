@@ -1,4 +1,16 @@
 GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: a4540e3e77f6088c5baf46b4ae49489a4cfd4ffe
+  specs:
+    polyamorous (2.3.0)
+      activerecord (>= 5.2.1)
+    ransack (2.3.0)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+      polyamorous (= 2.3.0)
+
+GIT
   remote: https://github.com/manfe/refile.git
   revision: 46b4178654e60bb5846b1423acf6d0740cdecc25
   specs:
@@ -315,6 +327,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.3)
+  ransack!
   refile!
   refile-mini_magick
   sass-rails (~> 5.0)

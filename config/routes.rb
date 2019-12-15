@@ -37,4 +37,6 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:create, :update]
   get '/search_gnabi' => 'restaurants#search_gnabi'
 
+  get 'search' => 'homes#search'
+
 end

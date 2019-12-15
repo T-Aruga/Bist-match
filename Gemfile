@@ -30,7 +30,7 @@ gem 'cocoon'
 gem 'jquery-ui-rails', '~> 5.0'
 gem 'geocoder', '~> 1.4'
 
-# gem 'ransack'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 # gem 'momentjs-rails'
 
 # gem 'rails-i18n'
