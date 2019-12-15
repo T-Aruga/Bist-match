@@ -1,6 +1,6 @@
 <% if @guest_reviews.count == 0 %>
   <div class="text-center">
-    <h4>There are no reviews.</h4>
+    <h4>レビューはまだ存在しません</h4>
   </div>
 <% else %>
 
@@ -8,7 +8,7 @@
     <hr/>
     <div class="row">
       <div class="col-md-3 text-center">
-        <%= image_tag avatar_url(r.guest), class: "img-circle avatar-medium" %><br/><br/>
+        <%= attachment_image_tag r.guest, :image, :fill, 40, 40, fallback: "no_image.png", size:'40x40', class: "img-circle" %><br/><br/>
         <strong><%= r.guest.fullname %></strong>
       </div>
       <div class="col-md-9">
@@ -21,7 +21,7 @@
               <% end %>
             </span>
         <% end %>
-        <div><%= r.created_at.strftime("%v") %></div>
+        <div><%= r.created_at.strftime("%F") %></div>
         <div><%= r.comment %></div>
       </div>
     </div>

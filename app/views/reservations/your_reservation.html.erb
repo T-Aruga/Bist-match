@@ -34,8 +34,8 @@
                     </span>
                   </div>
                   <div class="col-md-3 text-right">
-                    <%= reservation.status %>
                     <%= render partial: "reviews/host_form", locals: {reservation: reservation} %>
+                    <p class="row-space-2"><%= reservation.status %></p>
                   </div>
                 </div>
                 <hr/>

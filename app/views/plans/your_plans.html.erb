@@ -16,9 +16,12 @@
         <% @plans.each do |plan| %>
           <div class="row">
             <div class="col-md-2">
+              <%= plan.plan_date %>
+            </div>
+            <div class="col-md-2">
               <%= image_tag "#{plan.restaurant.image_url}", size: '100x100' %>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-5">
               <h4><%= plan.title %></h4>
             </div>
             <div class="col-md-3 right">

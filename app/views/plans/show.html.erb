@@ -184,3 +184,11 @@
 </div>
 
 </div>
+
+<script>
+  $('#average_rating').raty({
+    path: '/assets',
+    readOnly: true,
+    score: <%= @plan.average_rating %>
+  });
+</script>
