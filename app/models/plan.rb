@@ -4,6 +4,8 @@ class Plan < ApplicationRecord
   has_many :photos, dependent: :destroy
   accepts_attachments_for :photos, attachment: :image
 
+  has_many :guest_reviews
+
   belongs_to :user
   belongs_to :restaurant
   belongs_to :jenre
