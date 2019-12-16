@@ -1,42 +1,44 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= render 'user_menu' %>
-  </div>
-  <div class="col-md-9">
-    <div class="panel panel-default">
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'user_menu' %>
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
 
-      <div class="panel-heading">
-        Photos
-      </div>
-
-      <div class="panel-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-              <!-- PHOTOS UPLOAD GOES HERE -->
-
-              <%= form_for @user do |f| %>
-                <div class="row">
-                  <div class="form-group">
-                    <span class="btn btn-default btn-file text-babu">
-                      <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i> 画像を選ぶ
-                      <%= f.attachment_field :image, placeholder: "プロフィール画像", id: 'user_img' %>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="text-center">
-                  <%= f.submit "選択した画像に変更する", class: "btn btn-form" %>
-                </div>
-
-              <% end %>
-            </div>
-          </div>
-
-          <div id="photo"><%= render 'photos/photos_prev' %></div>
+        <div class="panel-heading">
+          Photos
         </div>
-      </div>
 
+        <div class="panel-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-offset-3 col-md-6">
+                <!-- PHOTOS UPLOAD GOES HERE -->
+
+                <%= form_for @user do |f| %>
+                  <div class="row">
+                    <div class="form-group">
+                      <span class="btn btn-default btn-file text-babu">
+                        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i> 画像を選ぶ
+                        <%= f.attachment_field :image, placeholder: "プロフィール画像", id: 'user_img' %>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="text-center">
+                    <%= f.submit "選択した画像に変更する", class: "btn btn-form" %>
+                  </div>
+
+                <% end %>
+              </div>
+            </div>
+
+            <div id="photo"><%= render 'photos/photos_prev' %></div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

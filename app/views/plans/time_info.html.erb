@@ -1,63 +1,65 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= render 'plan_menu' %>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'plan_menu' %>
+    </div>
 
-  <div class="col-md-9">
-    <div class="panel panel-default">
+    <div class="col-md-9">
+      <div class="panel panel-default">
 
-      <div class="panel-heading">
-        プラン日時
-      </div>
-
-      <div class="panel-body">
-        <div class="container">
-          <%= form_for @plan do |f| %>
-
-            <div class="row">
-                  <div class="col-md-offset-1 col-md-6">
-                    <div class="form-group row-space-3">
-                      <label>実施日</label>
-                      <%= f.text_field :plan_date, autocomplete: 'off', class: 'form-control', id: 'plan_date' %>
-                    </div>
-                  </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="time-group">
-                    <label>開始時間</label>
-                    <%=  f.time_select :start_time, include_blank: true, ignore_data: true,  minute_step: 15, class: 'time-box form-control' %>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="time-group">
-                    <label>終了時間</label>
-                    <%=  f.time_select :end_time, include_blank: true, ignore_data: true, minute_step: 15, class: 'time-box form-control' %>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-offset-1 col-md-6">
-                    <div class="form-group row-space-3">
-                      <label>募集の締切日</label>
-                      <%= f.text_field :deadline, autocomplete: 'off', class: 'form-control', id: 'deadline' %>
-                    </div>
-                </div>
-                <div class="col-md-5 row-space-4">
-                  <p>指定締切日の23:59までの期間で募集を行います</p>
-                </div>
-              </div>
-
-              <div class="text-center">
-                <%= f.submit "保存", class: "btn btn-normal text-center" %>
-              </div>
-          <% end %>
+        <div class="panel-heading">
+          プラン日時
         </div>
-      </div>
 
+        <div class="panel-body">
+          <div class="container">
+            <%= form_for @plan do |f| %>
+
+              <div class="row">
+                    <div class="col-md-offset-1 col-md-6">
+                      <div class="form-group row-space-3">
+                        <label>実施日</label>
+                        <%= f.text_field :plan_date, autocomplete: 'off', class: 'form-control', id: 'plan_date' %>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="time-group">
+                      <label>開始時間</label>
+                      <%=  f.time_select :start_time, include_blank: true, ignore_data: true,  minute_step: 15, class: 'time-box form-control' %>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="time-group">
+                      <label>終了時間</label>
+                      <%=  f.time_select :end_time, include_blank: true, ignore_data: true, minute_step: 15, class: 'time-box form-control' %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-6">
+                      <div class="form-group row-space-3">
+                        <label>募集の締切日</label>
+                        <%= f.text_field :deadline, autocomplete: 'off', class: 'form-control', id: 'deadline' %>
+                      </div>
+                  </div>
+                  <div class="col-md-5 row-space-4">
+                    <p>指定締切日の23:59までの期間で募集を行います</p>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <%= f.submit "保存", class: "btn btn-normal text-center" %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

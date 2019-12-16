@@ -1,70 +1,72 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= render 'user_menu' %>
-  </div>
-  <div class="col-md-9">
-    <div class="panel panel-default">
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'user_menu' %>
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
 
-      <div class="panel-heading">
-        プロフィール
-      </div>
-
-      <div class="panel-body">
-        <div class="container">
-          <%= form_for @user do |f| %>
-
-            <div class="row">
-              <div class="form-group">
-                <label>名前（フルネーム）</label>
-                <%= f.text_field :fullname, placeholder: "鈴木 一郎 または Ichiro Suzuki...", class: "form-control", required: true %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group">
-                <label>メールアドレス</label>
-                <%= f.text_field :email, placeholder: "メールアドレスを入力...", class: "form-control", required: true %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group">
-                <label>電話番号</label>
-                <%= f.text_field :phone_number, placeholder: "電話番号をを入力(ハイフンなし)...", class: "form-control", required: true %>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="form-group">
-                <label>性別</label>
-                <%= f.select :sex, User.sexes.keys.to_a, {}, class: "form-control", required: true %>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="form-group">
-                <label>年齢</label>
-                <%= f.text_field :age, placeholder: "年齢を入力...", class: "form-control", required: true %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group">
-                <label>職業</label>
-                 <%= f.text_field :job, placeholder: "職業を入力...", class: "form-control", required: true %>
-              </div>
-            </div>
-
-            <div class="text-center">
-              <%= f.submit "保存", class: "btn btn-form" %>
-            </div>
-
-          <% end %>
+        <div class="panel-heading">
+          プロフィール
         </div>
-      </div>
 
+        <div class="panel-body">
+          <div class="container">
+            <%= form_for @user do |f| %>
+
+              <div class="row">
+                <div class="form-group">
+                  <label>名前（フルネーム）</label>
+                  <%= f.text_field :fullname, placeholder: "鈴木 一郎 または Ichiro Suzuki...", class: "form-control", required: true %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <label>メールアドレス</label>
+                  <%= f.text_field :email, placeholder: "メールアドレスを入力...", class: "form-control", required: true %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <label>電話番号</label>
+                  <%= f.text_field :phone_number, placeholder: "電話番号をを入力(ハイフンなし)...", class: "form-control", required: true %>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="form-group">
+                  <label>性別</label>
+                  <%= f.select :sex, User.sexes.keys.to_a, {}, class: "form-control", required: true %>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="form-group">
+                  <label>年齢</label>
+                  <%= f.text_field :age, placeholder: "年齢を入力...", class: "form-control", required: true %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <label>職業</label>
+                  <%= f.text_field :job, placeholder: "職業を入力...", class: "form-control", required: true %>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <%= f.submit "保存", class: "btn btn-form" %>
+              </div>
+
+            <% end %>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

@@ -49,7 +49,7 @@ a {
 }
 
 .pagetop-field {
-	padding-bottom: 61px;
+	padding-bottom: 72px;
 	background-color: #232530;
 	height: 0.1px;
 }
@@ -60,6 +60,7 @@ a {
 // NAVBARS
 .navbar {
   background: rgba(0, 0, 0, 0.7)!important;
+  border-style: none;
 }
 
 .navbar-default {
@@ -442,6 +443,24 @@ a {
   background-size: cover;
   height: 800px;
   position: relative;
+}
+
+.bg-text1 {
+  position: absolute;
+  top: 370px;
+  left: 140px;
+  color: #fff;
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.bg-text2 {
+  position: absolute;
+  top: 420px;
+  left: 140px;
+  color: #fff;
+  font-weight: 300;
+  font-size: 30px;
 }
 
 // SEARCH
