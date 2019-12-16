@@ -34,10 +34,10 @@
 
                 <div class="row">
                   <div class="col-md-6">
-                    <%= text_field_tag :plan_date, params[:plan_date], readonly: true, placeholder: "Plan Date", class: "form-control datepicker" %>
+                    <%= text_field_tag :plan_date, params[:plan_date], readonly: true, placeholder: "Plan Date", class: "form-control datepicker", id: 'plan_date' %>
                   </div>
                   <div class="col-md-6">
-                    <%= text_field_tag :deadline, params[:deadline], readonly: true, placeholder: "Deadline", class: "form-control datepicker" %>
+                    <%= text_field_tag :deadline, params[:deadline], readonly: true, placeholder: "Deadline", class: "form-control datepicker", id: 'deadline' %>
                   </div>
                 </div>
                 <hr/>
@@ -46,7 +46,7 @@
                   <div class="col-md-4">
                     <div class="form-group select">
                       <label>参加人数</label>
-                      <%= f.select :member_gteq, [["1", 1], ["2", 2], ["3", 3], ["4", 4]], id: "member", prompt: "Select...", class: "form-control" %>
+                      <%= f.select :member_gteq, [["1", 1], ["2", 2], ["3", 3], ["4", 4]], id: "member", prompt: "選択して下さい", class: "form-control" %>
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -136,7 +136,13 @@
   $(function(){
 
       $('#plan_date').datepicker({
-        dateFormat: 'dd-mm-yy',
+        dateFormat: 'yy-mm-dd',
+        minDate: 0,
+        maxDate: '3m',
+      });
+
+      $('#deadline').datepicker({
+        dateFormat: 'yy-mm-dd',
         minDate: 0,
         maxDate: '3m',
       });
@@ -153,4 +159,26 @@
       });
     });
 
+</script>
+
+<script>
+  $(function() {
+    $("#q_price_gteq").val('300');
+    $("#q_price_lteq").val('1000');
+
+    $("#slider-range").slider({
+      range: true,
+      min: 0,
+      max: 5000,
+      values: [300, 1000],
+      slide: function(event, ui) {
+        $("#q_price_gteq").val(ui.values[0]);
+        $("#q_price_lteq").val(ui.values[1]);
+      }
+    });
+
+    $(".ui-widget-header").css('background', '#00A699');
+    $(".ui-state-default, .ui-widget-content").css('background', 'white');
+    $(".ui-state-default, .ui-widget-content").css('border-color', '#00A699');
+  })
 </script>

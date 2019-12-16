@@ -11,7 +11,6 @@ class HomesController < ApplicationController
 
     # 近隣のプラン情報を取得する
     if session[:location] && session[:location] != ""
-      #binding.pry
       @plans_address = Plan.where(active: true).where(status: 1).near(session[:location], 3, order: 'distance')
     else
       @plans_address = Plan.where(active: true).where(status: 1).all

@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery-ui/datepicker
+//= require jquery-ui/slider
 //= require activestorage
 //= require toastr
 //= require cocoon
