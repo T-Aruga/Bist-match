@@ -48,9 +48,20 @@ a {
   color: #FF5A5F;
 }
 
+.pagetop-field {
+	padding-bottom: 61px;
+	background-color: #232530;
+	height: 0.1px;
+}
+
+
 
 
 // NAVBARS
+.navbar {
+  background: rgba(0, 0, 0, 0.7)!important;
+}
+
 .navbar-default {
   background-color: #232530;
 }
@@ -422,6 +433,15 @@ a {
 .user-info li {
   margin-bottom: 4px;
   list-style-type: none;
+}
+
+//  TOP PAGE
+
+.bg {
+  background-image: url("https://picjumbo.com/wp-content/uploads/san-francisco-at-night-2210x1474.jpg");    /* 背景画像指定 */
+  background-size: cover;
+  height: 800px;
+  position: relative;
 }
 
 // SEARCH
