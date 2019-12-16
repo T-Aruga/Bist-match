@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_12_15_034407) do
     t.date "plan_date"
     t.date "deadline"
     t.text "requirement"
+    t.float "longitude"
+    t.float "latitude"
     t.integer "restaurant_id", null: false
     t.integer "jenre_id", default: 1, null: false
     t.integer "user_id", null: false

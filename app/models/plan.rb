@@ -11,6 +11,8 @@ class Plan < ApplicationRecord
   belongs_to :jenre
   belongs_to :area
 
+  geocoded_by :address
+
 
 
   enum status: { 募集終了: 0, 募集中: 1 }

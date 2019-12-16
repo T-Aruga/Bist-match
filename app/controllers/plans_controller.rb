@@ -13,6 +13,8 @@ class PlansController < ApplicationController
   def create
     @plan = current_user.plans.build(plan_params)
     @plan.restaurant_id = @restaurant.id
+    @plan.latitude = @restaurant.latitude
+    @plan.longitude = @restaurant.longitude
     if @plan.save
       redirect_to listing_plan_path(@plan), notice: "プランを新規作成しました！"
     else
