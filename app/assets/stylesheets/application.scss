@@ -54,6 +54,12 @@ a {
 	height: 0.1px;
 }
 
+.top-field {
+  padding-bottom: 60px;
+	background-color: #232530;
+	height: 0.1px;
+}
+
 
 
 
@@ -461,6 +467,47 @@ a {
   color: #fff;
   font-weight: 300;
   font-size: 30px;
+}
+
+.search-form {
+  position: absolute;
+  top: 500px;
+  left: 300px;
+}
+
+.search-bt {
+  position: absolute;
+  top: 630px;
+  left: 30px;
+  width: 350px;
+}
+
+.discovery-card1 {
+  background-image: url("https://www.pakutaso.com/shared/img/thumb/COW121000645_TP_V.jpg");
+  height: 200px;
+  background-size: cover;
+  border-radius: 20%;
+}
+
+.discovery-card2 {
+  background-image: url("https://www.pakutaso.com/shared/img/thumb/PAKSHIBUYA0I9A6246_TP_V.jpg");
+  height: 200px;
+  background-size: cover;
+  border-radius: 20%;
+}
+
+.discovery-card3 {
+  background-image: url("https://www.pakutaso.com/shared/img/thumb/roppongi0720IMGL7359_TP_V.jpg");
+  height: 200px;
+  background-size: cover;
+  border-radius: 20%;
+}
+
+.discovery-card4 {
+  background-image: url("https://www.pakutaso.com/shared/img/thumb/tokyoIMGL3336_TP_V.jpg");
+  height: 200px;
+  background-size: cover;
+  border-radius: 20%;
 }
 
 // SEARCH

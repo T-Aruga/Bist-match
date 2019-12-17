@@ -15,7 +15,11 @@
   </head>
 
   <body>
-      <div class="<%= 'pagetop-field' if user_signed_in? %>"></div>
+    <% if user_signed_in? %>
+      <div class="pagetop-field"></div>
+    <% else %>
+      <div class="top-field"></div>
+    <% end %>
 
       <%= render 'shared/navbar' %>
       <%= render 'shared/message' %>
