@@ -40,4 +40,6 @@ Rails.application.routes.draw do
 
   get 'search' => 'homes#search'
 
+  get 'dashboard' => 'dashboards#index'
+
 end
