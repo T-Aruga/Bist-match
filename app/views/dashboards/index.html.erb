@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading"><%= current_user.fullname %> 様</div>
+        <div class="panel-body">
+            <div class="image-wrapper">
+              <%= attachment_image_tag current_user, :image, :fill, 100, 100, fallback: "no_image.png", size:'100x100', class: "img-circle" %><br/><br/>
+            </div>
+            <ul class="sidebar-list user-info">
+              <li>E-mail: <span class="pull-right icon-babu"><i class="fas fa-envelope"></i></span><%= current_user.email %></li>
+              <li>職業: <span class="pull-right icon-babu"><i class="fas fa-user-md"></i></span><%= current_user.job %></li>
+              <li>好きなジャンル: <span class="pull-right icon-babu"><i class="fas fa-utensils"></i></span><%= current_user.jenre.name %></li>
+              <li>好きなお店: <span class="pull-right icon-babu"><i class="fas fa-utensils"></i></span><%= current_user.favorite_store %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+
+      <!-- Notification -->
+      <div class="panel panel-default">
+        <div class="panel-heading">通知一覧</div>
+        <div class="panel-body">
+        </div>
+      </div>
+
+      <!-- Your Plans -->
+      <div class="panel panel-default">
+        <div class="panel-heading">ホストプラン一覧 (<%= @plans.length %>)</div>
+        <div class="panel-body">
+          <%= render partial: "plans/plan_list", locals: {plans: @plans} %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

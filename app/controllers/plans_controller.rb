@@ -1,9 +1,10 @@
 class PlansController < ApplicationController
 
-  before_action  :set_plan, except: [:new, :index, :create, :your_plans]
+  before_action  :set_plan, except: [:new, :index, :create]
   before_action  :set_rest, only: [:new, :create]
 
   def index
+    @plans = Plan.where(user_id: current_user.id).order(id: :asc)
   end
 
   def new
@@ -44,10 +45,6 @@ class PlansController < ApplicationController
   end
 
   def time_info
-  end
-
-  def your_plans
-    @plans = Plan.where(user_id: current_user.id).order(id: :asc)
   end
 
 
