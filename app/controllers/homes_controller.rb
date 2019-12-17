@@ -16,7 +16,7 @@ class HomesController < ApplicationController
       @plans_address = Plan.where(active: true).where(status: 1).all
     end
 
-    # 検索オブジェクトの生成 ransack[params:q]の検索対象はsearch.html.erbでマークする 検索結果を一つずつ表示するために配列にする
+    # 検索オブジェクトの生成 検索結果を一つずつ表示するために配列にする
     @search = @plans_address.ransack(params[:q])
     @plans = @search.result
 

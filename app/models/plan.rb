@@ -5,13 +5,27 @@ class Plan < ApplicationRecord
   accepts_attachments_for :photos, attachment: :image
 
   has_many :guest_reviews
+  has_many :favorites, dependent: :destroy
 
   belongs_to :user
   belongs_to :restaurant
   belongs_to :jenre
   belongs_to :area
 
-  geocoded_by :address
+
+  # プランにいいね
+  def good(user)
+    favorites.create(user_id: user.id)
+  end
+
+  def ungood(user)
+    favorites.find_by(user_id: user.id).destroy
+  end
+
+  def good?(user)
+    user_ids = favorites.pluck(:user_id)
+    user_ids.include?(user.id)
+  end
 
 
 

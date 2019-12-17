@@ -29,6 +29,7 @@ gem "refile-mini_magick"
 gem 'cocoon'
 gem 'jquery-ui-rails', '~> 5.0'
 gem 'geocoder', '~> 1.4'
+gem 'counter_culture', '~> 1.8'
 
 gem 'ransack', github: 'activerecord-hackery/ransack'
 # gem 'momentjs-rails'

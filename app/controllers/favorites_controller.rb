@@ -1,10 +1,30 @@
 class FavoritesController < ApplicationController
 
-  def create
+    def create
+      @plan = Plan.find(params[:plan_id])
+      unless @plan.good?(current_user)
+        @plan.good(current_user)
+        #アイコンの切り替え時に必要
+        @plan.reload
 
+        respond_to do |format|
+          format.html {redirect_to request.referrer || root_url}
+          format.js
+        end
+      end
+    end
+
+    def destroy
+      @plan = Plan.find(params[:plan_id])
+      if @plan.good?(current_user)
+        @plan.ungood(current_user)
+        #アイコンの切り替え時に必要
+        @plan.reload
+
+        respond_to do |format|
+          format.html {redirect_to request.referrer || root_url}
+          format.js
+        end
+      end
+    end
   end
-
-  def destroy
-
-  end
-end
