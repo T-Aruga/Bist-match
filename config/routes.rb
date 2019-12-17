@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'messages/index'
+  get 'conversations/index'
   root 'homes#top'
 
   devise_for :users
@@ -46,5 +48,9 @@ Rails.application.routes.draw do
   get 'search' => 'homes#search'
 
   get 'dashboard' => 'dashboards#index'
+
+  resources :conversations, only: [:index, :create]  do
+    resources :messages, only: [:index, :create]
+  end
 
 end
