@@ -34,7 +34,7 @@
                 </span>
               </div>
               <div class="col-md-3 text-right">
-                <%= render partial: "reviews/guest_form", locals: {reservation: reservation} %>
+                <%= render partial: "reviews/guest_form", locals: {reservation: reservation} if reservation.status == "未参加" %>
                 <p class="row-space-2"><%= reservation.status %></p>
               </div>
             </div>

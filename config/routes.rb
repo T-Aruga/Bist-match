@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root 'homes#top'
 
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :users, except: [:edit]  do
     member do
@@ -30,6 +29,13 @@ Rails.application.routes.draw do
 
   resources :guest_reviews, only: [:create, :destroy]
   resources :host_reviews, only: [:create, :destroy]
+
+  resources :reservations, only: [:approve, :decline] do
+    member do
+      post '/approve' => "reservations#approve"
+      post '/decline' => "reservations#decline"
+    end
+  end
 
   get '/your_reservation' => 'reservations#your_reservation'
   get '/your_entry' => 'reservations#your_entry'

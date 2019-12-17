@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
 
+  before_action :set_reservation, only: [:approve, :decline]
+
 
   def create
     plan = Plan.find(params[:plan_id])
@@ -27,8 +29,22 @@ class ReservationsController < ApplicationController
     @reservations = current_user.reservations.order(plan_date: :asc)
   end
 
+  def approve
+    @reservation.update_attribute(:status, 2)
+    redirect_to your_reservation_path
+  end
+
+  def decline
+    @reservation.update_attribute(:status, 0)
+    redirect_to your_reservation_path
+  end
+
 
   private
+
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+  end
 
    def reservation_params
      params.require(:reservation).permit(:price)

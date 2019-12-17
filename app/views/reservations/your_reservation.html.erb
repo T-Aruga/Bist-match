@@ -35,8 +35,14 @@
                       </span>
                     </div>
                     <div class="col-md-3 text-right">
-                      <%= render partial: "reviews/host_form", locals: {reservation: reservation} %>
+                      <%= render partial: "reviews/host_form", locals: {reservation: reservation} if reservation.status == "承認" %>
                       <p class="row-space-2"><%= reservation.status %></p>
+                      <% if reservation.status == "承認待ち" %>
+                        <div class="form-inline">
+                              <%= link_to approve_reservation_path(reservation), method: :post do %> <i class="fas fa-user-check fa-lg"></i> <% end %> |
+                              <%= link_to decline_reservation_path(reservation), method: :post do %> <i class="fas fa-times fa-lg"></i> <% end %>
+                        </div>
+                      <% end %>
                     </div>
                   </div>
                   <hr/>
