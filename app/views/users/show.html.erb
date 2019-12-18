@@ -1,9 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <div class="center">
-
-      </div>
       <div class="panel panel-default">
         <div class="panel-heading"><%= @user.fullname %> 様</div>
         <div class="panel-body">
@@ -15,6 +12,9 @@
             <li>職業: <span class="pull-right icon-babu"><i class="fas fa-user-md"></i></span><%= @user.job %></li>
             <li>好きなジャンル: <span class="pull-right icon-babu"><i class="fas fa-utensils"></i></span><%= @user.jenre.name %></li>
             <li>好きなお店: <span class="pull-right icon-babu"><i class="fas fa-utensils"></i></span><%= @user.favorite_store %></li>
+            <% if current_user && current_user != @user %>
+              <li><%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-default" %></li>
+            <% end %>
           </ul>
         </div>
       </div>

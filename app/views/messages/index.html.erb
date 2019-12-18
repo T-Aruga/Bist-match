@@ -1,2 +1,35 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 text-center">
+      <%= attachment_image_tag @other, :image, :fill, 100, 100, fallback: "no_image.png", size:'100x100', class: "img-circle" %>
+      <strong><%= @other.fullname %></strong>
+      <%= link_to "View Profile", @other, class: "btn btn-default" %>
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= @other.fullname %>
+          <input id="conversation_id" type="hidden" value="<%= @conversation.id %>">
+        </div>
+        <div class="panel-body">
+          <div class="container text-center">
+            <%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
+                <div class="form-group">
+                  <%= f.text_field :content, placeholder: "メッセージを入力...", class: "form-control" %>
+                </div>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <div>
+                  <%= f.submit "メッセージを送る", class: "btn btn-normal" %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div id="chat">
+        <%= render @messages %>
+      </div>
+
+    </div>
+  </div>
+</div>
