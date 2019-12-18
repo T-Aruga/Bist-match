@@ -32,7 +32,9 @@ gem 'geocoder', '~> 1.4'
 gem 'counter_culture', '~> 1.8'
 
 gem 'ransack', github: 'activerecord-hackery/ransack'
-# gem 'momentjs-rails'
+
+gem 'stripe', '~> 3.0.0'
+gem 'rails-assets-card', source: 'https://rails-assets.org'
 
 # gem 'rails-i18n'
 # gem 'devise-i18n'

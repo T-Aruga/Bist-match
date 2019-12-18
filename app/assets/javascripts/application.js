@@ -17,5 +17,6 @@
 //= require jquery-ui/slider
 //= require activestorage
 //= require toastr
+//= require card
 //= require cocoon
 //= require_tree .
