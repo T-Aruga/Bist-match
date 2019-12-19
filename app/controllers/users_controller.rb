@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: [:payment, :add_card]
 
   def profile
   end
@@ -30,6 +30,33 @@ class UsersController < ApplicationController
       flash[:alert] = "編集内容の保存に失敗しました..."
     end
     redirect_back(fallback_location: request.referer)
+  end
+
+  def payment
+  end
+
+  def add_card
+    if current_user.stripe_id.blank?
+      customer = Stripe::Customer.create(
+        email: current_user.email,
+        description: "BistMatch 有料プランご利用"
+      )
+      current_user.stripe_id = customer.id
+      current_user.save
+
+      # クレカ情報をStripeに追加する
+      customer.sources.create(source: params[:stripeToken])
+    else
+      customer = Stripe::Customer.retrieve(current_user.stripe_id)
+      customer.source = params[:stripeToken]
+      customer.save
+    end
+
+    flash[:notice] = "カード情報を保存しました！"
+    redirect_to payment_method_path
+  rescue Stripe::CardError => e
+    flash[:alert] = e.message
+    redirect_to payment_method_path
   end
 
   def exit

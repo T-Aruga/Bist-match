@@ -49,6 +49,10 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'dashboards#index'
 
+  get '/payment_method' => "users#payment"
+  get '/payout_method' => "users#payout"
+  post '/add_card' => "users#add_card"
+
   resources :conversations, only: [:index, :create]  do
     resources :messages, only: [:index, :create]
   end
