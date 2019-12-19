@@ -11,9 +11,10 @@ class HomesController < ApplicationController
 
     # 近隣のプラン情報を取得する
     if session[:location] && session[:location] != ""
-      @plans_address = Plan.where(active: true).where(status: 1).near(session[:location], 3, order: 'distance')
-    else
-      @plans_address = Plan.where(active: true).where(status: 1).all
+      @plans_address = Plan.where("status = ? AND active = ?", 1, true).near(session[:location], 3, order: 'distance')
+      if @plans_address.empty?
+        @plans_address = Plan.where("status = ? AND active = ?", 1, true).all
+      end
     end
 
     # 検索オブジェクトの生成 検索結果を一つずつ表示するために配列にする
@@ -34,6 +35,5 @@ class HomesController < ApplicationController
         end
       end
     end
-
   end
 end

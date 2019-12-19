@@ -9,14 +9,11 @@
       <div class="col-md-6">
         <%= text_field_tag :search, params[:search], placeholder: "興味のある場所を入力", class: "form-control" %>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <%= text_field_tag :plan_date, params[:plan_date], placeholder: "プラン開催日", class: "form-control datepicker" %>
       </div>
-      <div class="col-md-2">
-        <%= text_field_tag :start_time, params[:start_time], placeholder: "開始時間", class: "form-control" %>
-      </div>
-      <div class="col-md-2">
-        <%= text_field_tag :endt_time, params[:end_time], placeholder: "終了時間", class: "form-control" %>
+      <div class="col-md-3">
+        <%= text_field_tag :period_time, params[:period_time], placeholder: "時間帯", class: "form-control" %>
       </div>
     </div>
     <br/><br/>
@@ -99,7 +96,7 @@
   $(function(){
 
       $('#plan_date').datepicker({
-        dateFormat: 'dd-mm-yy',
+        dateFormat: 'yy-mm-dd',
         minDate: 0,
         maxDate: '3m',
       });

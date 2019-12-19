@@ -12,6 +12,8 @@ class Plan < ApplicationRecord
   belongs_to :jenre
   belongs_to :area
 
+  geocoded_by :address
+
 
   # プランにいいね
   def good(user)
