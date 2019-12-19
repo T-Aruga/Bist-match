@@ -100,6 +100,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    chartkick (2.2.5)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -326,6 +327,7 @@ DEPENDENCIES
   bullet
   byebug
   capybara (>= 2.15)
+  chartkick (~> 2.2.4)
   chromedriver-helper
   cocoon
   coffee-rails (~> 4.2)

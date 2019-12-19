@@ -37,7 +37,13 @@ class ReservationsController < ApplicationController
   end
 
   def approve
-    charge(@reservation.plan, @reservation)
+    if @reservation.price == 0
+      @reservation.update_attribute(:status, 2)
+      flash[:notice] = "参加手続きが完了しました!"
+    else
+      # Stripeの決済を行う
+      charge(@reservation.plan, @reservation)
+    end
     redirect_to your_reservation_path
   end
 

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'revenues_controller/index'
   get 'messages/index'
   get 'conversations/index'
   root 'homes#top'
@@ -48,6 +49,7 @@ Rails.application.routes.draw do
   get 'search' => 'homes#search'
 
   get 'dashboard' => 'dashboards#index'
+  resources :revenues, only: [:index]
 
   get '/payment_method' => "users#payment"
   get '/payout_method' => "users#payout"

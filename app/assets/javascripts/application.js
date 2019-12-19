@@ -18,5 +18,7 @@
 //= require activestorage
 //= require toastr
 //= require card
+//= require Chart.bundle
+//= require chartkick
 //= require cocoon
 //= require_tree .
