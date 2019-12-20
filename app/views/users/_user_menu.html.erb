@@ -36,9 +36,12 @@
 
 <hr/>
 
-<% is_ready = !@user.active && !@user.fullname.blank? && !@user.email.blank? && !@user.description.blank? && !@user.image_id.blank? && !@user.favorite_store.blank? && !@user.jenre_id.blank? %>
 
-<%= form_for @user do |f| %>
-  <%= f.hidden_field :active, value: true %>
-  <%= f.submit "プロフィールを公開する", id: "publish_button", class: "btn btn-normal btn-block", disabled: !is_ready %>
+<% if @user.active == false %>
+  <%= form_for @user do |f| %>
+    <%= f.hidden_field :active, value: true %>
+    <%= f.submit "プロフィールを公開する", id: "publish_button", class: "btn btn-normal btn-block" %>
+  <% end %>
+<% else %>
+  <%= link_to "マイページへ行く", user_path(current_user), class: 'btn btn-normal' %>
 <% end %>

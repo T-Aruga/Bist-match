@@ -261,6 +261,11 @@ a {
   font-weight: 400;
 }
 
+.panel-body {
+  box-shadow: 0 5px 7px #ccc;
+  word-wrap: break-word;
+}
+
 .panel-heading.preview {
   padding: 0;
 }

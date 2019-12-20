@@ -41,13 +41,12 @@
 
 <hr/>
 
-<% is_ready = !@plan.active && !@plan.price.blank? && !@plan.member.blank? && !@plan.jenre_id.blank? && !@plan.status.blank? && !@plan.area_id.blank? &&
-              !@plan.restaurant.name.blank? && !@plan.restaurant.address.blank? && !@plan.restaurant.line.blank? && !@plan.restaurant.station.blank? &&
-              !@plan.restaurant.walk.blank? && !@plan.summary.blank? && !@plan.title.blank? && !@plan.requirement.blank? && !@plan.photos.blank? &&
-              !@plan.plan_date.blank? && !@plan.start_time.blank? && !@plan.end_time.blank? && !@plan.deadline.blank?
- %>
 
-<%= form_for @plan do |f| %>
-  <%= f.hidden_field :active, value: true %>
-  <%= f.submit "プランを公開する", id: "publish_button", class: "btn btn-normal btn-block", disabled: !is_ready %>
+<% if @plan.active == false %>
+  <%= form_for @plan do |f| %>
+    <%= f.hidden_field :active, value: true %>
+    <%= f.submit "プランを公開する", id: "publish_button", class: "btn btn-normal btn-block" %>
+  <% end %>
+<% else %>
+  <%= link_to "プランの詳細へ行く", plan_path(@plan), class: "btn btn-normal" %>
 <% end %>
