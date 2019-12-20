@@ -49,7 +49,7 @@ a {
 }
 
 .pagetop-field {
-	padding-bottom: 72px;
+	padding-bottom: 70px;
 	background-color: #232530;
 	height: 0.1px;
 }
@@ -65,12 +65,11 @@ a {
 
 // NAVBARS
 .navbar {
-  background: rgba(0, 0, 0, 0.7)!important;
   border-style: none;
 }
 
 .navbar-default {
-  background-color: #232530;
+  background-color: #003C59;
 }
 
 .navbar-default .navbar-brand {
@@ -156,10 +155,10 @@ a {
 }
 .cp_tag01 a:hover {
 	color: #ffffff;
-	background-color: #FF001E;
+	background-color: #00B3C4;
 }
 .cp_tag01 a:hover::after {
-	border-left-color:#FF001E;
+	border-left-color:#00B3C4;
 }
 
 // BUTTONS
@@ -194,13 +193,14 @@ a {
     }
 
     &.btn-normal {
-      border: 1px solid #ff5a5f;
-      background-color: #ff5a5f;
+      border: 1px solid #FF5A5F;
+      background-color: #FF5A5F;
+
 
         &:active {
           outline: none;
-          border-color: #e00007;
-          background-color: #e00007;
+          border-color: #FF5A5F;
+          background-color: #FF5A5F;
         }
     }
 
@@ -216,13 +216,13 @@ a {
     }
 
     &.btn-form {
-      border: 1px solid #00A699;
-      background-color: #00A699;
+      border: 1px solid #00B3C4;
+      background-color: #00B3C4;
 
         &:active {
           outline: none;
-          border-color: #066165;
-          background-color: #066165;
+          border-color: #232530;
+          background-color: #232530;
         }
     }
 
@@ -237,9 +237,9 @@ a {
   display: inline-block;
   max-width: 180px;
   text-align: left;
-  border: 2px solid #ff0000;
+  border: 2px solid #FF5A5F;
   font-size: 16px;
-  color: #ff0000;
+  color: #FF5A5F;
   text-decoration: none;
   font-weight: bold;
   padding: 8px 16px;
@@ -248,15 +248,15 @@ a {
 }
 
 .btn-border:hover  {
-  background-color: #ff0000;
-  border-color: #ff0000;
+  background-color: #FF5A5F;
+  border-color: #FF5A5F;
   color: #FFF;
 }
 
 // PANELS
 .panel-default .panel-heading {
   color: #ffffff;
-  background-color: #00A699;
+  background-color: #00B3C4;
   font-size: 18px;
   font-weight: 400;
 }
@@ -303,18 +303,18 @@ a {
 
     input {
       height: 45px;
-      border: 1px solid #00A699;
+      border: 1px solid #00B3C4;
     }
 
     textarea {
-      border: 1px solid #00A699;
+      border: 1px solid #00B3C4;
     }
 
     select {
       width: 100%;
       color: #565a5c;
       background-color: white;
-      border: 1px solid #00A699;
+      border: 1px solid #00B3C4;
       border-radius: 2px;
       padding: 10px;
       appearance: none;
@@ -323,7 +323,7 @@ a {
           content: '\25bc';
           font-size: 1.2em;
           position: absolute;
-          color: #00A699;
+          color: #00B3C4;
           top: 35px;
           right: 30px;
           transform: scale(0.94, 0.62);
@@ -336,7 +336,7 @@ a {
       margin-bottom: -0.25em;
       margin-right: 5px;
       vertical-align: top;
-      border: 1px solid #00A699;
+      border: 1px solid #00B3C4;
       border-radius: 2px;
       appearance: none;
     }
@@ -353,7 +353,7 @@ a {
   font-size: 0.95em;
   text-align: center;
   width: 1.25em;
-  color: #00A699;
+  color: #00B3C4;
 }
 
 
@@ -562,13 +562,13 @@ a {
   text-align: center;
   font-size: 16px;
   font-weight: 600;
-  color: #00A699;
+  color: #00B3C4;
 }
 
 .form-control.datepicker {
-  color: #00A699;
+  color: #00B3C4;
   background-color: white;
-  border: 1px solid #00A699;
+  border: 1px solid #00B3C4;
   text-align: center;
 }
 
@@ -622,14 +622,14 @@ a {
 
 .field:focus,
 .field.StripeElement--focus {
-  border-color: #F99A52;
+  border-color: #FF5A5F;
 }
 
 #add-card button {
   float: left;
   display: block;
-  background-image: linear-gradient(-180deg, #F8B563 0%, #F99A52 100%);
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.10), inset 0 -1px 0 0 #E57C45;
+  background-image: linear-gradient(-180deg, #FF5A5F 0%, #FF5A5F 100%);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.10), inset 0 -1px 0 0 #FF5A5F;
   color: white;
   border-radius: 24px;
   border: 0;
@@ -643,11 +643,11 @@ a {
 }
 
 #add-card button:focus {
-  background: #EF8C41;
+  background: #FF5A5F;
 }
 
 #add-card button:active {
-  background: #E17422;
+  background: #FF5A5F;
 }
 
 .outcome {
