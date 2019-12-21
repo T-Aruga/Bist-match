@@ -112,8 +112,15 @@ $(function(){
     params.name = $("#key").val();
     params.pref = $("#key2").val();
     params.category_l = $("#key3").val();
-    $.getJSON(url, params, function(result){
-      showResult(result);
+    $.ajax({
+      type: "GET",
+      url: url,
+      data: params
+    }).done(function(result){
+      showResult(result)
+    })
+      .fail(function(result){
+      $("#tbody").append(`<tr><td>なし</td><td>なし</td><td>検索結果が見つかりませんでした</td></tr>`);
     });
   });
 
