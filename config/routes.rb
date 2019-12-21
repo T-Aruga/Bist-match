@@ -55,10 +55,8 @@ Rails.application.routes.draw do
   get '/payment_method' => "users#payment"
   post '/add_card' => "users#add_card"
 
-  resources :conversations, only: [:index, :create]  do
-    resources :messages, only: [:index, :create]
-  end
+  post 'messages', to: 'messages#create'
 
-  mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
 
 end

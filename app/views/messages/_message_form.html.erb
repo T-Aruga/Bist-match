@@ -1,0 +1,43 @@
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-normal btn-block" data-toggle="modal" data-target="#myModal_<%= user.id %>">
+  メッセージを送る
+</button>
+
+<!-- Modal -->
+<div id="myModal_<%= user.id %>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-left"><%= user.fullname %>さんにメッセージを送る</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: Message.new do |f| %>
+          <%= f.hidden_field :recipient_id, value: user.id %>
+            <div class="form-group text-center">
+            <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "no_image.png", size:'100x100', class: "img-circle" %><br/>
+            <%= user.fullname %>
+            </div>
+            <div class="form-group">
+              <%= f.text_area :content, rows: 3, class: "form-control" %>
+            </div>
+
+            <div class="text-center">
+              <%= f.submit "送信", class: "btn btn-normal", id: 'toggle-contact', required: true %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $( function() {
+    $('#toggle-contact').click( function () {
+      $('#myModal_<%= user.id %>').modal('hide');
+    });
+  });
+</script>

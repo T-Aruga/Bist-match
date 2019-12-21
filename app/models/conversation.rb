@@ -6,7 +6,17 @@ class Conversation < ApplicationRecord
   has_many :messages, dependent: :destroy
   validates_uniqueness_of :sender_id, :recipient_id
 
-  # scopeでメソッドを定義する
+  # 最新のメッセージを取得
+  def last_message
+    message = Message.where(conversation_id: self.id).last
+    if message.present?
+      return message
+    else
+      return Message.new updated_at: Time.now
+    end
+  end
+
+  # scopeでクエリメソッドを定義する
   scope :involving, -> (user) {
     where("conversations.sender_id = ? OR conversations.recipient_id = ?", user.id, user.id)
   }

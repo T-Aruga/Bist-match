@@ -44,7 +44,7 @@
                 <li role="separator" class="divider"></li>
                 <li><%= link_to "マイページ", user_path(current_user) %></li>
                 <li><%= link_to "プロフィール編集", profile_user_path(current_user) %></li>
-                <li><%= link_to "メッセージ", conversations_path %></li>
+                <li><%= link_to "メッセージ", root_path %></li>
                 <li><%= link_to "収益管理", revenues_path %></li>
                 <li><%= link_to "カード情報", payment_method_path %></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>

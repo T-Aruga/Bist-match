@@ -65,7 +65,6 @@ class HomesController < ApplicationController
     @plans = @search.result
 
     @arrPlans = @plans.to_a
-    p "aaaaaaaaaaaaaaaaaaa"
-    p @arrPlans
+
   end
 end
