@@ -61,10 +61,11 @@ class HomesController < ApplicationController
       @plans_address = Plan.where("status = ? AND active = ?", 1, true).all
     end
 
-    @search = @plans_address.ransack(params[:q])
+    @search = @plans_address.includes(:jenre).ransack(params[:q])
     @plans = @search.result
 
     @arrPlans = @plans.to_a
-
+    p "aaaaaaaaaaaaaaaaaaa"
+    p @arrPlans
   end
 end
