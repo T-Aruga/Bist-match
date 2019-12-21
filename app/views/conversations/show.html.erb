@@ -8,7 +8,7 @@
           <% @other = c.sender_id == current_user.id ? c.recipient : c.sender %>
           <%= link_to conversation_detail_path(@other.id) do %>
 
-            <div class="panel-body">
+            <div class="panel-body <%= 'primary' if c.id == @conversation.id %>">
               <%= attachment_image_tag @other, :image, :fill, 40, 40, fallback: "no_image.png", size:'40x40', class: "img-circle" %>&nbsp;&nbsp;&nbsp;
               <strong><%= @other.fullname %></strong>
               <span class="pull-right"><%= c.last_message.updated_at.strftime("%b %Y") %></span>
@@ -22,8 +22,12 @@
         <% end %>
 
       <!-- Chat-room Message -->
-      <div class="col-md-8 text-center row-space-5">
-        <h3>トークルームを選んで下さい</h3>
+      <div class="col-md-8">
+          <div class="Recipient-profile text-center">
+            <%= attachment_image_tag @user, :image, :fill, 64, 64, fallback: "no_image.png", size:'64x64', class: "img-circle" %>
+            <strong><%= @user.fullname %></strong>
+          </div>
+          <hr>
 
       </div>
 
