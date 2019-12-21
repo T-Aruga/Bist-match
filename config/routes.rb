@@ -55,7 +55,9 @@ Rails.application.routes.draw do
   get '/payment_method' => "users#payment"
   post '/add_card' => "users#add_card"
 
-  post 'messages', to: 'messages#create'
+  post 'messages' => 'messages#create'
+  get '/conversations' => 'conversations#list'
+  get '/conversations/:id' => 'conversations#show', as: "conversation_detail"
 
   # mount ActionCable.server => '/cable'
 

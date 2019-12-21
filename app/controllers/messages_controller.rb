@@ -8,10 +8,11 @@ class MessagesController < ApplicationController
 
       conversation = Conversation.where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)",
                                         current_user.id, message_params[:recipient_id],
-                                        params[:recipient_id], current_user.id).first
+                                        message_params[:recipient_id], current_user.id).first
 
       if !conversation.present?
-        conversation = Conversation.create(sender_id: current_user.id, recipient_id: message_params[:recipient_id])
+        recipient_id = message_params[:recipient_id].to_i
+        conversation = Conversation.create(sender_id: current_user.id, recipient_id: recipient_id)
       end
 
       @message = Message.new(user_id: current_user.id,

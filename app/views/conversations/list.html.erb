@@ -1,0 +1,33 @@
+<div class="container row-space-4">
+  <div class="row">
+    <!-- Chat-room list   -->
+    <div class="col-md-4">
+      <div class="panel">
+        <div class="panel-heading">全てのトークルーム</div>
+        <% @conversations.each do |c| %>
+          <% @other = c.sender_id == current_user.id ? c.recipient : c.sender %>
+          <%= link_to conversation_detail_path(@other.id) do %>
+
+            <div class="panel-body">
+              <%= attachment_image_tag @other, :image, :fill, 40, 40, fallback: "no_image.png", size:'40x40', class: "img-circle" %>&nbsp;&nbsp;&nbsp;
+              <strong><%= @other.fullname %></strong>
+              <span class="pull-right"><%= c.last_message.updated_at.strftime("%b %Y") %></span>
+              <br/>
+              <div class="row-space-2">
+                <%= (c.last_message.user_id == current_user.id ? "あなた: #{c.last_message.content}" : c.last_message.content).truncate(20) %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+
+      <!-- Chat-room Message -->
+      <div class="col-md-8">
+        <h4>Select a conversion</h4>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

@@ -1,23 +1,28 @@
 class ConversationsController < ApplicationController
+  before_action :get_conversations
 
-
-  def index
-    @conversations = Conversation.involving(current_user)
+  def list
   end
 
-  def create
-    if Conversation.between(params[:sender_id], params[:recipient_id]).present?
-      @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
-    else
-      @conversation = Conversation.create(conversation_params)
-    end
+  def show
+      @user = User.find(params[:id])
 
-    redirect_to conversation_messages_path(@conversation)
+      @conversation = Conversation.where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)",
+                                              current_user.id, params[:id],
+                                              params[:id], current_user.id
+                                          ).first
+      if !@conversation.present?
+          redirect_to conversations_path, alert: "無効なアクセスです"
+      else
+          @messages = Message.where(conversation_id: @conversation.id)
+      end
   end
 
   private
 
-    def conversation_params
-      params.permit(:sender_id, :recipient_id)
-    end
+  def get_conversations
+      @conversations = Conversation
+                          .where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+                          .order(updated_at: :desc)
+  end
 end
