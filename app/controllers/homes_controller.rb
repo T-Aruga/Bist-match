@@ -36,4 +36,35 @@ class HomesController < ApplicationController
       end
     end
   end
+
+  def search_jenre
+
+    if params[:jenre_id].present?
+      session[:jenre_id] = params[:jenre_id]
+    end
+
+    if session[:jenre_id].to_i == 2
+      # ジャンル 寿司
+      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", 2)
+    elsif session[:jenre_id].to_i == 6
+      # ジャンル 焼肉
+      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", 6)
+    elsif session[:jenre_id].to_i == 12
+      # ジャンル フレンチ
+      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", 12)
+      # ジャンル イタリアン
+    elsif session[:jenre_id].to_i == 13
+      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", 13)
+    end
+
+    if @plans_address.empty?
+      @plans_address = Plan.where("status = ? AND active = ?", 1, true).all
+    end
+
+    @search = @plans_address.ransack(params[:q])
+    @plans = @search.result
+
+    @arrPlans = @plans.to_a
+
+  end
 end

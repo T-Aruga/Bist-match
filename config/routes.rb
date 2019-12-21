@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get '/search_gnabi' => 'restaurants#search_gnabi'
 
   get 'search' => 'homes#search'
+  get 'search_jenre' => 'homes#search_jenre'
 
   get 'dashboard' => 'dashboards#index'
   resources :revenues, only: [:index]
