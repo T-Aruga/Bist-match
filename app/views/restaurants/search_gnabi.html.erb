@@ -21,12 +21,15 @@
             <div class="row"><br/>
               <div class="form-group">
                 <div class="col-md-offset-1 col-md-4">
-                  <label class="control-label" for="areacode_m">エリア</label>
+                  <label class="control-label" for="category_l">カテゴリ</label>
                 </div>
                 <div class="col-md-6">
-                  <%= select_tag 'areacode_m', options_for_select({sample1: 1, sample2: 2, sample3: 3}, 1), id: 'key3' %>
+                  <%= select_tag 'category_l', options_for_select({居酒屋: "RSFST09000", 日本料理・郷土料理: "RSFST02000", すし・魚料理・シーフード: "RSFST03000", 鍋: "RSFST04000", 焼肉・ホルモン: "RSFST05000",
+                                                      焼き鳥・肉料理・串料理: "RSFST06000", 和食: "RSFST01000", ラーメン・麺料理: "RSFST08000", 中華: "RSFST14000", イタリアン・フレンチ: "RSFST11000", カレー: "RSFST16000",
+                                                      アジア・エスニック料理: "RSFST15000", ダイニングバー・バー・ビアホール: "RSFST10000", カフェ・スイーツ: "RSFST18000" }), id: 'key3'
+                  %>
                 </div>
-                </div>
+              </div>
             </div>
 
             <div class="row"><br/>
@@ -94,7 +97,7 @@ $(function(){
     keyid: "<%= ENV['GNABI_API_KEY'] %>",
     name: "",
     pref: "",
-    areacode_m: "",
+    category_l: "",
   };
   var counts = []
   var showResult = function(result){
@@ -107,6 +110,8 @@ $(function(){
   $(document).on("click", "#search", function(){
     $("#tbody").empty();
     params.name = $("#key").val();
+    params.pref = $("#key2").val();
+    params.category_l = $("#key3").val();
     $.getJSON(url, params, function(result){
       showResult(result);
     });
