@@ -54,7 +54,10 @@ class PlansController < ApplicationController
     new_params = plan_params.merge(active: true) if is_ready_plan
 
     if @plan.update(new_params)
-      flash[:notice] = "編集内容を保存しました"
+      if @plan.active == true
+         return redirect_to plan_path(@plan), notice: "プランを公開しました！"
+      end
+      flash[:notice] = "編集内容を保存しました！"
     else
       flash[:alert] = "編集内容の保存に失敗しました..."
     end

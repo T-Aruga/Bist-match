@@ -25,7 +25,10 @@ class UsersController < ApplicationController
     new_params = user_params.merge(active: true) if is_ready_user
 
     if @user.update(new_params)
-      flash[:notice] = "編集内容を保存しました"
+      if @user.active == true
+         return redirect_to user_path(@user), notice: "プロフィールを公開しました！"
+      end
+      flash[:notice] = "編集内容を保存しました！"
     else
       flash[:alert] = "編集内容の保存に失敗しました..."
     end
