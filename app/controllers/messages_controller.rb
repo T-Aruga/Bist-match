@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
       else
         flash[:alert] = "メッセージが送れませんでした"
       end
-      redirect_back(fallback_location: request.referer)
+      redirect_to request.referrer
     end
 
     private

@@ -14,7 +14,7 @@
         <h4 class="modal-title text-left"><%= user.fullname %>さんにメッセージを送る</h4>
       </div>
       <div class="modal-body">
-        <%= form_with model: Message.new do |f| %>
+        <%= form_with model: Message.new, local: true do |f| %>
           <%= f.hidden_field :recipient_id, value: user.id %>
             <div class="form-group text-center">
             <%= attachment_image_tag user, :image, :fill, 60, 60, fallback: "no_image.png", size:'100x100', class: "img-circle" %><br/>

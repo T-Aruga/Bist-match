@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def update
 
     new_params = user_params
-    new_params = user_params.merge(active: true) if is_ready_user
+    new_params = user_params.merge(active: true) if @user.is_ready_user?
 
     if @user.update(new_params)
       if @user.active == true
@@ -75,10 +75,5 @@ class UsersController < ApplicationController
       params.require(:user).permit(:fullname, :email, :phone_number, :description, :image, :sex, :age,
                                    :favorite_store, :job, :jenre_id, :active)
     end
-
-    def is_ready_user
-      !@user.active && !@user.fullname.blank? && !@user.email.blank? && !@user.description.blank? && !@user.image_id.blank? && !@user.favorite_store.blank? && !@user.jenre_id.blank?
-    end
-
 
 end

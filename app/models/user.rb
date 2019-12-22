@@ -22,4 +22,9 @@ class User < ApplicationRecord
 
   validates :fullname, presence: true, length: { maximum: 50 }
 
+
+  def is_ready_user?
+    !self.active && !self.fullname.blank? && !self.email.blank? && !self.description.blank? && !self.image_id.blank? && !self.favorite_store.blank? && !self.jenre_id.blank?
+  end
+
 end
