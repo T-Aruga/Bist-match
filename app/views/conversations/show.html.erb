@@ -37,7 +37,7 @@
         <div class="row">
           <div class="col-md-12">
                 <%= form_with model: Message.new, id: "new_message" do |f| %>
-                    <%= f.hidden_field :receiver_id, value: @user.id %>
+                    <%= f.hidden_field :recipient_id, value: @user.id %>
                     <div class="form-group chatbox">
                         <div class="control">
                             <%= f.text_field :content, class: 'message-box', placeholder: "メッセージを入力..." %>
