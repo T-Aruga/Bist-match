@@ -19,19 +19,45 @@
 
     <div class="col-md-9">
 
-      <!-- Notification -->
+      <!-- Favorites -->
       <div class="panel panel-default">
-        <div class="panel-heading">お気に入り一覧</div>
+        <div class="panel-heading">
+          お気に入り一覧
+        </div>
         <div class="panel-body">
+
+          <% @favoPlans.each do |f| %>
+            <div class="row">
+              <div class="col-md-2">
+                <%= f.plan.plan_date %>
+              </div>
+              <div class="col-md-2">
+                <%= link_to plan_path(f.plan) do %>
+                  <%= image_tag "#{f.plan.restaurant.image_url}", size: '100x100' %>
+                <% end %>
+              </div>
+              <div class="col-md-5">
+                <%= link_to f.plan.title, plan_path(f.plan) %><br/><br/>
+                <span>
+                  <%= attachment_image_tag f.plan.user, :image, :fill, 40, 40, fallback: "no_image.png", size:'40x40', class: "img-circle" %>
+                  <%= link_to user_path(f.plan.user) do %>
+                      <%= f.plan.user.fullname %>
+                  <% end %>
+                </span>
+              </div>
+              <div class="col-md-2">
+                <%= f.plan.status %>
+              </div>
+            </div>
+            <hr/>
+          <% end %>
         </div>
       </div>
 
       <!-- Your Plans -->
-      <div class="panel panel-default">
-        <div class="panel-heading">ホストプラン一覧 (<%= @plans.length %>)</div>
-        <div class="panel-body">
-          <%= render partial: "plans/plan_list", locals: {plans: @plans} %>
-        </div>
+      <h4 class="row-space-3">ホストプラン一覧 (<%= @plans.length %>)</h4>
+      <div class="row">
+        <%= render partial: "plans/plan_list", locals: {plans: @plans} %>
       </div>
 
     </div>
