@@ -1,0 +1,20 @@
+<% if m.user.id == user.id %>
+  <div class="mycomment">
+    <p><%= m.content %></p>
+  </div>
+  <span class="subtitle is-7"><%= time_ago_in_words(m.created_at) %>前</span>
+
+<% else %>
+
+  <div class="balloon6">
+    <div class="faceicon">
+      <%= attachment_image_tag m.user, :image, :fill, 30, 30, fallback: "no_image.png", size:'30x30', class: "img-circle" %>
+    </div>
+    <div class="chatting">
+      <div class="says">
+        <p><%= m.content %></p>
+      </div>
+      <span class="subtitle is-7"><%= time_ago_in_words(m.created_at) %>前</span>
+    </div>
+  </div>
+<% end %>

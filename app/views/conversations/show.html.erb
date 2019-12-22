@@ -23,12 +23,30 @@
 
       <!-- Chat-room Message -->
       <div class="col-md-8">
-          <div class="Recipient-profile text-center">
-            <%= attachment_image_tag @user, :image, :fill, 64, 64, fallback: "no_image.png", size:'64x64', class: "img-circle" %>
-            <strong><%= @user.fullname %></strong>
-          </div>
-          <hr>
+        <div class="Recipient-profile text-center">
+          <%= attachment_image_tag @user, :image, :fill, 55, 55, fallback: "no_image.png", size:'55x55', class: "img-circle" %>
+          <strong><%= @user.fullname %></strong>
+        </div>
 
+        <div class="line-bc" id="message_list">
+          <% @messages.each do |m| %>
+            <%= render 'conversations/message', m: m, user: current_user %>
+          <% end %>
+        </div>
+
+        <div class="column m-t-25">
+              <%= form_with model: Message.new, id: "new_message" do |f| %>
+                  <%= f.hidden_field :receiver_id, value: @user.id %>
+                  <div class="field has-addons">
+                      <div class="control" style="width: 100%">
+                          <%= f.text_field :content, class: "input", placeholder: "Type a message..." %>
+                      </div>
+                      <div class="control">
+                          <%= f.submit "Send", class: "button is-primary" %>
+                      </div>
+                  </div>
+              <% end %>
+          </div>
       </div>
 
 
