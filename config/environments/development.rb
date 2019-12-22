@@ -66,6 +66,9 @@ Rails.application.configure do
     Bullet.bullet_logger = true
     Bullet.console = true
     Bullet.rails_logger = true
+
+    # ホワイトリストを指定.
+    Bullet.add_whitelist type: :unused_eager_loading, class_name: 'User', association: :conversations
   end
 
 

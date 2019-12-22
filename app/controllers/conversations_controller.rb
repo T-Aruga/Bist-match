@@ -15,7 +15,7 @@ class ConversationsController < ApplicationController
       if !@conversation.present?
           redirect_to conversations_path, alert: "無効なアクセスです"
       else
-          @messages = Message.where(conversation_id: @conversation.id)
+          @messages = Message.includes(:user).where(conversation_id: @conversation.id)
       end
   end
 

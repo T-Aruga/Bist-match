@@ -28,16 +28,16 @@ class ReservationsController < ApplicationController
   end
 
   def your_reservation
-    @plans = current_user.plans
+    @plans = current_user.plans.includes(:reservations, :restaurant).page(params[:page]).per(10)
   end
 
   def your_entry
-    @reservations = current_user.reservations.order(plan_date: :asc)
+    @reservations = current_user.reservations.order(plan_date: :asc).page(params[:page]).per(10)
   end
 
   def approve
     if @reservation.price == 0
-      @reservation.update_attribute(:status, 2)
+      @reservation.update_attribute(status: 2)
       flash[:notice] = "参加手続きが完了しました!"
     else
       # Stripeの決済を行う
@@ -47,7 +47,7 @@ class ReservationsController < ApplicationController
   end
 
   def decline
-    @reservation.update_attribute(:status, 0)
+    @reservation.update_attribute(status: 0)
     redirect_to your_reservation_path
   end
 
@@ -65,15 +65,15 @@ class ReservationsController < ApplicationController
       )
 
       if charge
-        @reservation.update_attribute(:status, 2)
+        @reservation.update_attribute(status: 2)
         flash[:notice] = "参加手続きが完了しました!"
       else
-        @reservation.update_attribute(:status, 0)
+        @reservation.update_attribute(status: 0)
         flash[:alert] = "この支払い方法は使用出来ませんでした..."
       end
     end
   rescue Stripe::CardError => e
-    @reservation.update_attribute(:status, 0)
+    @reservation.update_attribute(status: 0)
     flash[:alert] = e.message
   end
 

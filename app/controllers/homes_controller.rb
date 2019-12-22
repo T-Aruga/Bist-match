@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @plans = Plan.where(active: true).order(status: :asc).page(params[:page])
+    @plans = Plan.includes(:restaurant).where(active: true).order(status: :asc).page(params[:page])
   end
 
   def search
@@ -11,9 +11,9 @@ class HomesController < ApplicationController
 
     # 近隣のプラン情報を取得する
     if session[:location] && session[:location] != ""
-      @plans_address = Plan.where("status = ? AND active = ?", 1, true).near(session[:location], 3, order: 'distance')
+      @plans_address = Plan.includes(:restaurant).where("status = ? AND active = ?", 1, true).near(session[:location], 3, order: 'distance')
       if @plans_address.empty?
-        @plans_address = Plan.where("status = ? AND active = ?", 1, true).all
+        @plans_address = Plan.includes(:restaurant).where("status = ? AND active = ?", 1, true).all
       end
     end
 
@@ -61,7 +61,7 @@ class HomesController < ApplicationController
       @plans_address = Plan.where("status = ? AND active = ?", 1, true).all
     end
 
-    @search = @plans_address.includes(:jenre).ransack(params[:q])
+    @search = @plans_address.includes(:jenre, :restaurant).ransack(params[:q])
     @plans = @search.result
 
     @arrPlans = @plans.to_a

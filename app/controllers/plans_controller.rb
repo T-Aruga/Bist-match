@@ -6,7 +6,7 @@ class PlansController < ApplicationController
 
 
   def index
-    @plans = Plan.where(user_id: current_user.id).order(id: :asc)
+    @plans = Plan.includes(:restaurant).where(user_id: current_user.id).order(id: :asc).page(params[:page]).per(10)
   end
 
   def new
@@ -29,7 +29,7 @@ class PlansController < ApplicationController
 
   def show
     @photos = @plan.photos
-    @guest_reviews = @plan.guest_reviews
+    @guest_reviews = @plan.guest_reviews.page(params[:page]).per(4)
   end
 
   def listing

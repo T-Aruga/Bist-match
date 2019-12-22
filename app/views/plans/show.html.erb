@@ -159,7 +159,7 @@
       <!-- NEAR BY PLANS -->
       <div class="row">
         <h3>近くで募集中のプラン</h3><br>
-        <% @plan.restaurant.nearbys(10).each do |rest| %>
+        <% @plan.restaurant.nearbys(5).each do |rest| %>
           <% if Plan.exists?(restaurant_id: rest.id, status: 1) %>
             <% rest.plans.each do |plan| %>
               <div class="col-md-4">
@@ -170,7 +170,9 @@
                   <% end %>
                   </div>
                   <div class="panel-body">
-                    <%= link_to plan.title, plan %>
+                    <%= link_to plan.title, plan %><br/>
+                    ¥<%= plan.price %>&nbsp;&nbsp;
+                    <%= plan.status %>
                   </div>
                 </div>
               </div>

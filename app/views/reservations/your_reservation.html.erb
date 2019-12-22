@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container row-space-6 bottom-space">
   <div class="row">
     <div class="col-md-3">
       <ul class="sidebar-list">
@@ -49,6 +49,7 @@
 
               <% end %>
           <% end %>
+          <%= paginate @plans, class: "paginate" %>
 
         </div>
       </div>

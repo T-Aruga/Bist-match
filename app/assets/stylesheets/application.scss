@@ -281,6 +281,10 @@ a {
   width: 100%;
 }
 
+.bottom-space {
+  padding-bottom: 250px;
+}
+
 .row-space-1 {
   margin-top: 6px;
   margin-bottom: 6px;
@@ -711,6 +715,7 @@ a {
   background: #fff;
   box-shadow: 0 5px 7px #ccc;
   overflow: scroll;
+  border-radius: 8px;
 }
 
 
