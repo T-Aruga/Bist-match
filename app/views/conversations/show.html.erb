@@ -34,18 +34,18 @@
           <% end %>
         </div>
 
-        <div class="column m-t-25">
-              <%= form_with model: Message.new, id: "new_message" do |f| %>
-                  <%= f.hidden_field :receiver_id, value: @user.id %>
-                  <div class="field has-addons">
-                      <div class="control" style="width: 100%">
-                          <%= f.text_field :content, class: "input", placeholder: "Type a message..." %>
-                      </div>
-                      <div class="control">
-                          <%= f.submit "Send", class: "button is-primary" %>
-                      </div>
-                  </div>
-              <% end %>
+        <div class="row">
+          <div class="col-md-12">
+                <%= form_with model: Message.new, id: "new_message" do |f| %>
+                    <%= f.hidden_field :receiver_id, value: @user.id %>
+                    <div class="form-group chatbox">
+                        <div class="control">
+                            <%= f.text_field :content, class: 'message-box', placeholder: "メッセージを入力..." %>
+                            <%= f.submit "送信", class: "btn btn-form chat-submit" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
           </div>
       </div>
 
