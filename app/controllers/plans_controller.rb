@@ -1,7 +1,9 @@
 class PlansController < ApplicationController
-
   before_action  :set_plan, except: [:new, :index, :create]
   before_action  :set_rest, only: [:new, :create]
+  before_action  :authenticate_user!, except: [:show]
+  before_action  :correct_user, only: [:listing, :rest_info, :photo_upload, :description, :time_info, :update]
+
 
   def index
     @plans = Plan.where(user_id: current_user.id).order(id: :asc)
@@ -74,6 +76,11 @@ class PlansController < ApplicationController
 
     def set_rest
       @restaurant = Restaurant.where(user_id: current_user.id).last
+    end
+
+    # 正しいユーザーか確認する
+    def correct_user
+      redirect_to root_path, alert: "権限がありません.." unless current_user.id == @plan.user.id
     end
 
     def plan_params

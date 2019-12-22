@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:payment, :add_card]
+  before_action :authenticate_user!, except: [:show]
+  before_action :correct_user, only: [:profile, :description, :photo_upload, :favorite_store, :payment, :update]
 
   def profile
   end
@@ -62,13 +64,15 @@ class UsersController < ApplicationController
     redirect_to payment_method_path
   end
 
-  def exit
-  end
-
   private
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    # 正しいユーザーか確認する
+    def correct_user
+      redirect_to root_path, alert: "権限がありません.." unless current_user.id == @user.id
     end
 
     def user_params

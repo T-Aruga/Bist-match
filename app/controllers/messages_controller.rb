@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-
+    before_action :authenticate_user!
 
     def create
       if current_user.id == message_params[:recipient_id]
