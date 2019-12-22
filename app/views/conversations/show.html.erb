@@ -1,28 +1,28 @@
-<div class="container row-space-4">
-  <div class="row">
-    <!-- Chat-room list   -->
-    <div class="col-md-4">
-      <div class="panel">
-        <div class="panel-heading">全てのトークルーム</div>
-        <% @conversations.each do |c| %>
-          <% @other = c.sender_id == current_user.id ? c.recipient : c.sender %>
-          <%= link_to conversation_detail_path(@other.id) do %>
-
-            <div class="panel-body <%= 'primary' if c.id == @conversation.id %>">
-              <%= attachment_image_tag @other, :image, :fill, 40, 40, fallback: "no_image.png", size:'40x40', class: "img-circle" %>&nbsp;&nbsp;&nbsp;
-              <strong><%= @other.fullname %></strong>
-              <span class="pull-right"><%= c.last_message.updated_at.strftime("%b %Y") %></span>
-              <br/>
-              <div class="row-space-2">
-                <%= (c.last_message.user_id == current_user.id ? "あなた: #{c.last_message.content}" : c.last_message.content).truncate(20) %>
-              </div>
-            </div>
+<section class="sect" data-channel-subscribe="conversation" data-conversation-id="<%= @conversation.id %>" data-user-id="<%= current_user.id %>">
+  <div class="container row-space-4">
+    <div class="row">
+      <!-- Chat-Room list   -->
+      <div class="col-md-4 row-space-6">
+        <div class="panel">
+          <div class="panel-heading">全てのトークルーム</div>
+            <% @conversations.each do |c| %>
+              <% @other = c.sender_id == current_user.id ? c.recipient : c.sender %>
+              <%= link_to conversation_detail_path(@other.id) do %>
+                <div class="panel-body <%= 'primary' if c.id == @conversation.id %>">
+                  <%= attachment_image_tag @other, :image, :fill, 40, 40, fallback: "no_image.png", size:'40x40', class: "img-circle" %>&nbsp;&nbsp;&nbsp;
+                  <strong><%= @other.fullname %></strong>
+                  <span class="pull-right"><%= c.last_message.updated_at.strftime("%b %Y") %></span>
+                  <br/>
+                  <div class="row-space-2">
+                    <%= (c.last_message.user_id == current_user.id ? "あなた: #{c.last_message.content}" : c.last_message.content).truncate(20) %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
           </div>
-          <% end %>
-        <% end %>
       </div>
 
-      <!-- Chat-room Message -->
+      <!-- Chat-Room Message -->
       <div class="col-md-8">
         <div class="Recipient-profile text-center">
           <%= attachment_image_tag @user, :image, :fill, 55, 55, fallback: "no_image.png", size:'55x55', class: "img-circle" %>
@@ -35,22 +35,25 @@
           <% end %>
         </div>
 
-        <div class="row">
-          <div class="col-md-12">
-                <%= form_with model: Message.new, id: "new_message" do |f| %>
-                    <%= f.hidden_field :recipient_id, value: @user.id %>
-                    <div class="form-group chatbox">
+
+          <div class="row">
+            <div class="col-md-12">
+                  <%= form_with model: Message.new, id: "new_message" do |f| %>
+                      <%= f.hidden_field :recipient_id, value: @user.id %>
+                      <div class="form-group chatbox">
                         <div class="control">
                             <%= f.text_field :content, class: 'message-box', placeholder: "メッセージを入力..." %>
                             <%= f.submit "送信", class: "btn btn-form chat-submit" %>
                         </div>
-                    </div>
-                <% end %>
-            </div>
+                      </div>
+                  <% end %>
+              </div>
           </div>
-      </div>
+        </div>
 
+      </div>
+    </div>
 
     </div>
   </div>
-</div>
+</section>

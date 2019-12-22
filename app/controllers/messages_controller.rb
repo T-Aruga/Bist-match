@@ -21,6 +21,19 @@ class MessagesController < ApplicationController
       )
 
       if @message.save
+        conversation.update!(updated_at: @message.created_at)
+        receipient = conversation.sender.id == current_user.id ? conversation.recipient : conversation.sender
+
+        MessagesChannel.broadcast_to conversation,
+                                  sender_id: current_user.id,
+                                  sender: render_message(@message, current_user),
+                                  receipient: render_message(@message, receipient)
+
+        if URI(request.referrer).path == conversation_detail_path(id: receipient.id)
+          return render json: {success: true}
+        end
+
+
         flash[:notice] = "メッセージを送信しました!"
       else
         flash[:alert] = "メッセージが送れませんでした"
@@ -29,6 +42,10 @@ class MessagesController < ApplicationController
     end
 
     private
+
+      def render_message(message, user)
+        self.render_to_string partial: 'conversations/message', locals: {m: message, user: user}
+      end
 
       def message_params
         params.require(:message).permit(:content, :recipient_id)
