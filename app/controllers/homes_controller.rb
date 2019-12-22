@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @plans = Plan.where(active: true).order(status: :asc)
+    @plans = Plan.where(active: true).order(status: :asc).page(params[:page])
   end
 
   def search

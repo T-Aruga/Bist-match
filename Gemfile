@@ -21,8 +21,7 @@ gem 'faker'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'font-awesome-sass', '~> 5.4.1'
 
-# gem 'kaminari','~> 1.1.1'
-# gem 'paranoia'
+gem 'kaminari','~> 1.1.1'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
@@ -36,10 +35,6 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'stripe', '~> 3.0.0'
 gem 'rails-assets-card', source: 'https://rails-assets.org'
 gem 'chartkick', '~> 2.2.4'
-
-# gem 'rails-i18n'
-# gem 'devise-i18n'
-# gem 'devise-i18n-views'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
