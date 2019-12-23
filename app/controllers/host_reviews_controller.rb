@@ -15,7 +15,7 @@ class HostReviewsController < ApplicationController
           # 既にレビューを行っているか確認する
           if @already_review.nil?
             @host_review = current_user.host_reviews.create(host_review_params)
-            flash[:alert] = "レビューを投稿しました!"
+            flash[:notice] = "レビューを投稿しました!"
           else
             flash[:alert] = "既にレビュー済みです"
           end

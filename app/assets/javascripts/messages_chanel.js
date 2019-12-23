@@ -1,4 +1,4 @@
-$( () => {
+$(function() {
     $('[data-channel-subscribe="conversation"]').each(function(index, element) {
         var $element = $(element),
             $chatList = $('#message_list'),

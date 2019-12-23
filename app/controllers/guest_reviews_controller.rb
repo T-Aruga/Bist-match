@@ -17,7 +17,7 @@ class GuestReviewsController < ApplicationController
           @guest_review = current_user.guest_reviews.create(guest_review_params)
           flash[:notice] = "レビューを投稿しました！"
       else
-          flash[:alert = "既にレビュー済みです"
+          flash[:alert] = "既にレビュー済みです"
       end
     else
       flash[:alert] = "プランは見つかりませんでした"
