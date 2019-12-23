@@ -30,8 +30,10 @@
 
         </div>
         <div class="col-md-4 text-center">
-          <%= attachment_image_tag @plan.user, :image, :fill, 100, 100, fallback: "no_image.png", size:'100x100', class: "img-circle" %><br/><br/>
-          <%= @plan.user.fullname %>
+          <%= link_to user_path(@plan.user) do %>
+            <%= attachment_image_tag @plan.user, :image, :fill, 100, 100, fallback: "no_image.png", size:'100x100', class: "img-circle" %><br/><br/>
+            <%= @plan.user.fullname %>
+          <% end %>
         </div>
       </div>
       <hr/>
@@ -169,10 +171,12 @@
                     <%= image_tag "#{rest.image_url}", size: '200x200'  %>
                   <% end %>
                   </div>
-                  <div class="panel-body">
+                  <div class="panel-body text-adjust">
                     <%= link_to plan.title, plan %><br/>
-                    ¥<%= plan.price %>&nbsp;&nbsp;
-                    <%= plan.status %>
+                    <div class="info">
+                      ¥<%= plan.price %>&nbsp;&nbsp;
+                      <%= plan.status %>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -180,7 +184,6 @@
           <% end %>
         <% end %>
       </div>
-
     </div>
 
     <!-- RIGHT AREA -->

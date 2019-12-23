@@ -281,7 +281,6 @@ a {
 
 .panel-body {
   box-shadow: 0 5px 7px #ccc;
-  word-wrap: break-word;
 }
 
 .panel-heading.preview {
@@ -290,6 +289,13 @@ a {
 
 .panel-heading.preview img {
   width: 100%;
+}
+
+.text-adjust {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 70px;
 }
 
 .bottom-space {

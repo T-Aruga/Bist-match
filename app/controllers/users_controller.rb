@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:payment, :add_card]
   before_action :authenticate_user!, except: [:show]
-  before_action :correct_user, only: [:profile, :description, :photo_upload, :favorite_store, :payment, :update]
+  before_action :correct_user, only: [:profile, :description, :photo_upload, :favorite_store, :update]
 
   def profile
   end
