@@ -50,6 +50,20 @@ User.create!(
     active: 1
 )
 
+User.create!(
+    fullname: "John Snow",
+    email: 'testuser@gmail.com',
+    password: 'aaaaaa',
+    phone_number: '09012349876',
+    description: 'ジョンです！皆さん、一緒に美味しいもの食べに行きましょう!',
+    age: 25,
+    sex: 0,
+    favorite_store: 'ウルフギャング・ステーキ',
+    job: '俳優',
+    jenre_id: 6,
+    active: 1
+)
+
 10.times do |n|
 	User.create!(
 		fullname: Faker::Name.name,

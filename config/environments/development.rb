@@ -60,16 +60,16 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.alert = true
-    Bullet.bullet_logger = true
-    Bullet.console = true
-    Bullet.rails_logger = true
+  # config.after_initialize do
+  #   Bullet.enable = true
+  #   Bullet.alert = true
+  #   Bullet.bullet_logger = true
+  #   Bullet.console = true
+  #   Bullet.rails_logger = true
 
-    # ホワイトリストを指定.
-    Bullet.add_whitelist type: :unused_eager_loading, class_name: 'User', association: :conversations
-  end
+  #   # ホワイトリストを指定.
+  #   Bullet.add_whitelist type: :unused_eager_loading, class_name: 'User', association: :conversations
+  # end
 
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

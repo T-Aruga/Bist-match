@@ -215,6 +215,17 @@ a {
         }
     }
 
+    &.btn-test {
+      border: 1px solid #3B5998;
+      background-color: #3B5998;
+    }
+
+    &.btn-test:active {
+      outline: none;
+      border-color: #3B5998;
+      background-color: #3B5998;
+    }
+
     &.btn-form {
       border: 1px solid #00B3C4;
       background-color: #00B3C4;

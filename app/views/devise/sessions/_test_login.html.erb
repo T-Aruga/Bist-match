@@ -1,0 +1,5 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= f.hidden_field :email, value: "testuser@gmail.com" %>
+  <%= f.hidden_field :password, value: "aaaaaa" %>
+  <%= f.submit "Test Login", class: "btn btn-test" %>
+<% end %>
