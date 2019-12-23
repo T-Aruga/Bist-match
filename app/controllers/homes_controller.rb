@@ -1,6 +1,10 @@
 class HomesController < ApplicationController
+
   def top
     @plans = Plan.includes(:restaurant).where(active: true).order(status: :asc).page(params[:page])
+  end
+
+  def about
   end
 
   def search
