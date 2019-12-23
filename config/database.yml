@@ -22,4 +22,11 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: Bist-match
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: rds-mysql-server.cfpxeimsql3t.ap-northeast-1.rds.amazonaws.com
+  username: root
+  password: Arkmori1853
