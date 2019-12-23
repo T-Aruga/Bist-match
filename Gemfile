@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 5.0'
 gem 'toastr-rails'
 
 gem 'dotenv-rails'
@@ -26,7 +27,9 @@ gem 'kaminari','~> 1.1.1'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'cocoon'
-gem 'jquery-ui-rails', '~> 5.0'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
 gem 'geocoder', '~> 1.4'
 gem 'counter_culture', '~> 1.8'
 
