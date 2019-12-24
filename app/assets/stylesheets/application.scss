@@ -280,7 +280,7 @@ a {
 }
 
 .panel-body {
-  box-shadow: 0 5px 7px #ccc;
+  box-shadow: 0 5px 10px #ccc;
 }
 
 .panel-heading.preview {
@@ -515,13 +515,13 @@ a {
 .search-form {
   position: absolute;
   top: 450px;
-  left: 350px;
+  left: 380px;
 }
 
 .search-bt {
   position: absolute;
   top: 580px;
-  left: 30px;
+  left: 50px;
   width: 350px;
 }
 
@@ -870,4 +870,11 @@ footer {
 
 .contact {
   color: white;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+      padding-top: 17px;
+      padding-bottom: 15px;
+  }
 }

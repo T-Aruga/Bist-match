@@ -198,7 +198,8 @@
 
 <script>
   $('#average_rating').raty({
-    path: '/assets',
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
     readOnly: true,
     score: <%= @plan.average_rating %>
   });
