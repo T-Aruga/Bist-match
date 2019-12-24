@@ -37,7 +37,7 @@
 
 
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" id="Fixed-form">
                   <%= form_with model: Message.new, id: "new_message" do |f| %>
                       <%= f.hidden_field :recipient_id, value: @user.id %>
                       <div class="form-group chatbox">
