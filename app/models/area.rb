@@ -1,4 +1,4 @@
 class Area < ApplicationRecord
 
-  has_many :areas
+  has_many :plans
 end

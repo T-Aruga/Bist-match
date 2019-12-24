@@ -44,25 +44,15 @@ class HomesController < ApplicationController
   def search_jenre
 
     if params[:jenre_id].present?
-      session[:jenre_id] = params[:jenre_id]
-    end
-
-    if session[:jenre_id].to_i == 2
-      # ジャンル 寿司
-      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", 2)
-    elsif session[:jenre_id].to_i == 6
-      # ジャンル 焼肉
-      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", 6)
-    elsif session[:jenre_id].to_i == 12
-      # ジャンル フレンチ
-      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", 12)
-      # ジャンル イタリアン
-    elsif session[:jenre_id].to_i == 13
-      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", 13)
+      session[:jenre_id] = params[:jenre_id].to_i
+      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", session[:jenre_id])
+    else
+      session[:area_id] = params[:area_id].to_i
+      @plans_address = Plan.joins(:area).where("plans.status = ? AND plans.active = ?", 1, true).where("areas.id = ?", session[:area_id])
     end
 
     if @plans_address.empty?
-      @plans_address = Plan.where("status = ? AND active = ?", 1, true).all
+      @plans_address = Plan.includes(:restaurant).where("status = ? AND active = ?", 1, true).all
     end
 
     @search = @plans_address.includes(:jenre, :restaurant).ransack(params[:q])

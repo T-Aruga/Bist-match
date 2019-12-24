@@ -38,27 +38,27 @@
   <div class="row">
     <div class="col-md-3 col-sm-12">
       <h4>新宿</h4>
-      <a href="https://cefc53d2.ngrok.io/search?utf8=%E2%9C%93&search=%E6%96%B0%E5%AE%BF">
+      <%= link_to search_jenre_path(area_id: 1) do %>
         <div class="discovery-card1"></div>
-      </a>
+      <% end %>
     </div>
     <div class="col-md-3 col-sm-12">
       <h4>渋谷</h4>
-      <a href="https://42ada731.ngrok.io/search?utf8=%E2%9C%93&search=%E6%B8%8B%E8%B0%B7">
+      <%= link_to search_jenre_path(area_id: 2) do %>
         <div class="discovery-card2"></div>
-      </a>
+      <% end %>
     </div>
     <div class="col-md-3 col-sm-12">
       <h4>六本木</h4>
-      <a href="https://42ada731.ngrok.io/search?utf8=%E2%9C%93&search=%E6%9D%B1%E4%BA%AC">
+      <%= link_to search_jenre_path(area_id: 6) do %>
         <div class="discovery-card3"></div>
-      </a>
+      <% end %>
     </div>
     <div class="col-md-3 col-sm-12">
       <h4>東京・丸の内</h4>
-      <a href="https://42ada731.ngrok.io/search?utf8=%E2%9C%93&search=%E5%85%AD%E6%9C%AC%E6%9C%A8">
+      <%= link_to search_jenre_path(area_id: 5) do %>
         <div class="discovery-card4"></div>
-      </a>
+      <% end %>
     </div>
   </div>
 
