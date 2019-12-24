@@ -24,10 +24,23 @@ body {
   color: #565a5c;
   background-color: #F8F8F8;
   font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  position: relative;
+  min-height: 100%;
+}
+
+#main {
+  padding-bottom: 200px;
 }
 
 a {
   color: #00A699;
+  border-style: none;
 }
 
 .clearfix::after {
@@ -849,7 +862,8 @@ footer {
   color: white;
   width: 100%;
   height: 100px;
-  margin-top: 100px;
+  position: absolute;
+  bottom: 0;
 }
 
 .copyright {

@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
   end
 
   def your_entry
-    @reservations = current_user.reservations.order(plan_date: :asc).page(params[:page]).per(10)
+    @reservations = current_user.reservations.page(params[:page]).per(10)
   end
 
   def approve

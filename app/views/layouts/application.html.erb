@@ -17,18 +17,22 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <div class="pagetop-field"></div>
-    <% else %>
-      <div class="top-field"></div>
-    <% end %>
+    <div id="wrapper">
+      <% if user_signed_in? %>
+        <div class="pagetop-field"></div>
+      <% else %>
+        <div class="top-field"></div>
+      <% end %>
 
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/message' %>
+        <%= render 'shared/navbar' %>
+        <div id="main">
+          <%= render 'shared/message' %>
 
-      <%= yield %>
+          <%= yield %>
 
-      <%= render 'shared/footer' %>
+          <%= render 'shared/footer' %>
+        </div>
+    </div>
   </body>
 
 </html>
