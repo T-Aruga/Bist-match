@@ -3,18 +3,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :correct_user, only: [:profile, :description, :photo_upload, :favorite_store, :update]
 
-  def profile
-  end
-
-  def description
-  end
-
-  def photo_upload
-  end
-
-  def favorite_store
-  end
-
   def show
     @plans = @user.plans
     @guest_reviews = Review.where(type: "GuestReview", host_id: @user.id).page(params[:page]).per(4)
@@ -35,9 +23,6 @@ class UsersController < ApplicationController
       flash[:alert] = "編集内容の保存に失敗しました..."
     end
     redirect_back(fallback_location: request.referer)
-  end
-
-  def payment
   end
 
   def add_card

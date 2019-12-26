@@ -32,8 +32,6 @@ class PlansController < ApplicationController
     @guest_reviews = @plan.guest_reviews.page(params[:page]).per(4)
   end
 
-  def listing
-  end
 
   def rest_info
     @restaurant = Restaurant.find_by(id: @plan.restaurant_id)
@@ -41,12 +39,6 @@ class PlansController < ApplicationController
 
   def photo_upload
     @photos = @plan.photos
-  end
-
-  def description
-  end
-
-  def time_info
   end
 
 
