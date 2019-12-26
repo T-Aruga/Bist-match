@@ -4,8 +4,6 @@ class HomesController < ApplicationController
     @plans = Plan.includes(:restaurant).where(active: true).order(status: :asc).page(params[:page])
   end
 
-  def about
-  end
 
   def search
     # ユーザーが検索した場所を保持する
