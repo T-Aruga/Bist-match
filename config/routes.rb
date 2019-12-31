@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'notifications/index'
   get 'revenues_controller/index'
   get 'messages/index'
   get 'conversations/index'
@@ -60,6 +61,7 @@ Rails.application.routes.draw do
   get '/conversations/:id' => 'conversations#show', as: "conversation_detail"
 
   get '/about' => "homes#about"
+  get '/notifications' => 'notifications#index'
 
   mount ActionCable.server => '/cable'
 

@@ -881,6 +881,16 @@ footer {
   color: white;
 }
 
+
+// Notification
+
+.badge {
+  background-color: #FF5A5F;
+  position: relative;
+  top: -15px;
+  left: -5px;
+}
+
 @media (min-width: 768px) {
   .navbar-nav > li > a {
       padding-top: 17px;

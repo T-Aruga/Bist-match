@@ -18,6 +18,7 @@
 
   <body>
     <div id="wrapper">
+
       <% if user_signed_in? %>
         <div class="pagetop-field"></div>
       <% else %>
@@ -25,13 +26,17 @@
       <% end %>
 
         <%= render 'shared/navbar' %>
+
         <div id="main">
+
           <%= render 'shared/message' %>
 
           <%= yield %>
 
           <%= render 'shared/footer' %>
+
         </div>
+
     </div>
   </body>
 
