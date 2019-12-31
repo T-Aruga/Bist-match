@@ -1,0 +1,21 @@
+<div class="container row-space-5 text-center">
+  <h2>退会ページ</h2>
+  <div class="row text-center">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">退会確認</div>
+        <div class="panel-body">
+          <div class="row">
+            <h4>本当に退会しますか？</h4>
+            <div class="col-md-6">
+              <%= link_to 'マイページへ', user_path(current_user), class: 'btn btn-block btn-form' %>
+            </div>
+            <div class="col-md-6">
+              <%= link_to "退会する", user_path(current_user),class: 'btn btn-block btn-normal', method: :delete, "data-confirm" => "本当に退会しますか？" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -57,6 +57,7 @@
                 <li><%= link_to "メッセージ", conversations_path %></li>
                 <li><%= link_to "収益管理", revenues_path %></li>
                 <li><%= link_to "カード情報", payment_method_path %></li>
+                <li><%= link_to "退会ページ", exit_user_path(current_user) %></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>

@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: [:payment, :add_card]
+  before_action :set_user, except: [:payment, :add_card, :exit, :destroy]
   before_action :authenticate_user!, except: [:show]
-  before_action :correct_user, only: [:profile, :description, :photo_upload, :favorite_store, :update]
+  before_action :forbid_test_user, only: [:update, :destroy]
+  before_action :correct_user, only: [:profile, :description, :photo_upload, :favorite_store, :update, :destroy]
 
   def show
     @plans = @user.plans
@@ -49,6 +50,11 @@ class UsersController < ApplicationController
     redirect_to payment_method_path
   end
 
+  def destroy
+    @user.destroy
+    redirect_to root_path, notice: "退会処理が完了しました"
+  end
+
   private
 
     def set_user
@@ -63,6 +69,13 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:fullname, :email, :phone_number, :description, :image, :sex, :age,
                                    :favorite_store, :job, :jenre_id, :active)
+    end
+
+    def forbid_test_user
+      if @user.email == "testuser@gmail.com"
+        flash[:alert] = "テストユーザーのため変更できません"
+        redirect_back(fallback_location: request.referer)
+      end
     end
 
 end
