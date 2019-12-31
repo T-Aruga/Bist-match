@@ -43,6 +43,9 @@
                     <%= current_user.fullname %> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
+                <% if current_user.try(:admin?) %>
+                  <li><%= link_to "管理画面", "/admin" %></li>
+                <% end %>
                 <li><%= link_to "ダッシュボード", dashboard_path %></li>
                 <li><%= link_to "新規プラン作成", new_plan_path %></li>
                 <li><%= link_to "ホストプラン一覧", plans_path %></li>
