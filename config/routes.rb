@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   get '/conversations/:id' => 'conversations#show', as: "conversation_detail"
 
   get '/about' => "homes#about"
+  get '/privacy' => "homes#privacy"
   get '/notifications' => 'notifications#index'
 
   mount ActionCable.server => '/cable'
