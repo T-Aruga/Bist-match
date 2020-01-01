@@ -2,14 +2,17 @@ class MessagesController < ApplicationController
     before_action :authenticate_user!
 
     def create
+      # 自分へのメッセージは不可
       if current_user.id == message_params[:recipient_id]
         redirect_to request.referrer, alert: "自分自身にメッセージは送れません"
       end
 
+      # メッセージ追加対象のトークルームの取得
       conversation = Conversation.where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)",
                                         current_user.id, message_params[:recipient_id],
                                         message_params[:recipient_id], current_user.id).first
 
+      # トークルームが存在しなければ、新たに作成する
       if !conversation.present?
         recipient_id = message_params[:recipient_id].to_i
         conversation = Conversation.create(sender_id: current_user.id, recipient_id: recipient_id)
@@ -33,7 +36,7 @@ class MessagesController < ApplicationController
           return render json: {success: true}
         end
 
-
+        # トークルーム以外からのメッセージはflashが発生する
         flash[:notice] = "メッセージを送信しました!"
       else
         flash[:alert] = "メッセージが送れませんでした"

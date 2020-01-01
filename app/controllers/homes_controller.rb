@@ -25,14 +25,14 @@ class HomesController < ApplicationController
 
     @arrPlans = @plans.to_a
 
-    # 開催日、締切日が過ぎているプランを検索結果から除外する
-    if params[:Plan_date] && !params[:plan_date].empty?
+    # 検索条件に当てはまらないプランを検索結果から除外する
+    if params[:plan_date] && !params[:plan_date].empty?
 
       plan_date = Date.parse(params[:plan_date])
 
       @arrPlans.each do |plan|
 
-        if plan.plan_date < Date.today || plan_date < plan.deadline
+        if plan.plan_date < Date.today || plan_date != plan.plan_date
           @arrPlans.delete(plan)
         end
       end
