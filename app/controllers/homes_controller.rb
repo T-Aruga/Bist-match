@@ -13,13 +13,13 @@ class HomesController < ApplicationController
 
     # 近隣のプラン情報を取得する
     if session[:location] && session[:location] != ""
-      @plans_address = Plan.includes(:restaurant).where("status = ? AND active = ?", 1, true).near(session[:location], 3, order: 'distance')
+      @plans_address = Plan.includes(:restaurant).available.near(session[:location], 3, order: 'distance')
       if @plans_address.empty?
-        @plans_address = Plan.includes(:restaurant).where("status = ? AND active = ?", 1, true).all
+        @plans_address = Plan.includes(:restaurant).available.all
       end
     end
 
-    # 検索オブジェクトの生成 検索結果を一つずつ表示するために配列にする
+    # 検索オブジェクトの生成
     @search = @plans_address.ransack(params[:q])
     @plans = @search.result
 
@@ -43,14 +43,14 @@ class HomesController < ApplicationController
 
     if params[:jenre_id].present?
       session[:jenre_id] = params[:jenre_id].to_i
-      @plans_address = Plan.joins(:jenre).where("plans.status = ? AND plans.active = ?", 1, true).where("jenres.id = ?", session[:jenre_id])
+      @plans_address = Plan.joins(:jenre).available.where("jenres.id = ?", session[:jenre_id])
     else
       session[:area_id] = params[:area_id].to_i
-      @plans_address = Plan.joins(:area).where("plans.status = ? AND plans.active = ?", 1, true).where("areas.id = ?", session[:area_id])
+      @plans_address = Plan.joins(:area).available.where("areas.id = ?", session[:area_id])
     end
 
     if @plans_address.empty?
-      @plans_address = Plan.includes(:restaurant).where("status = ? AND active = ?", 1, true).all
+      @plans_address = Plan.includes(:restaurant).available.all
     end
 
     @search = @plans_address.includes(:jenre, :restaurant).ransack(params[:q])

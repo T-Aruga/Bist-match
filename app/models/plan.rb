@@ -17,16 +17,23 @@ class Plan < ApplicationRecord
 
   geocoded_by :address
 
+  # 募集中の利用可能なプランを取得
+  scope :available, -> {
+      where("status = ? AND active = ?", 1, true)
+  }
+
 
   # プランにいいね
   def good(user)
     favorites.create(user_id: user.id)
   end
 
+  # いいねを取り消す
   def ungood(user)
     favorites.find_by(user_id: user.id).destroy
   end
 
+  # いいね済みかどうか確認
   def good?(user)
     user_ids = favorites.pluck(:user_id)
     user_ids.include?(user.id)

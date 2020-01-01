@@ -20,6 +20,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+
 body {
   color: #565a5c;
   background-color: #F8F8F8;
@@ -892,15 +893,6 @@ footer {
   color: white;
 }
 
-
-// Notification
-
-.badge {
-  background-color: #FF5A5F;
-  position: relative;
-  top: -15px;
-  left: -5px;
-}
 
 @media (min-width: 768px) {
   .navbar-nav > li > a {

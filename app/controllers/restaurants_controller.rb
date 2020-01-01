@@ -6,8 +6,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(rest_params)
-    @restaurant.user_id = current_user.id
+    @restaurant = current_user.restaurants.build(rest_params)
     if @restaurant.save
       redirect_to new_plan_path, notice: "店舗情報を保存しました！"
     else
@@ -30,7 +29,8 @@ class RestaurantsController < ApplicationController
   private
 
   def rest_params
-    params.require(:restaurant).permit(:name, :pc_url, :address, :budget, :line, :station, :walk, :latitude, :longitude, :image_url )
+    params.require(:restaurant).permit(:name, :pc_url, :address, :budget, :line, :station, :walk,
+                                       :latitude, :longitude, :image_url )
   end
 
 end

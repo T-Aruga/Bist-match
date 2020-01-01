@@ -7,6 +7,7 @@ class User < ApplicationRecord
   attachment :image
 
   has_many :plans, dependent: :destroy
+  has_many :restaurants, dependent: :destroy
   has_many :reservations, dependent: :destroy
   has_many :favorites, dependent: :destroy
 

@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
 
   has_many :plans
+  belongs_to :user
 
   geocoded_by :address
   # after_validation :geocode, if: :address_present?

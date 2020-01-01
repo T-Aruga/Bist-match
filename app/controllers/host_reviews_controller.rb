@@ -33,9 +33,8 @@ class HostReviewsController < ApplicationController
     redirect_back(fallback_location: request.referer, notice: "レビューを削除しました!")
   end
 
-
-
   private
+
     def host_review_params
       params.require(:host_review).permit(:comment, :star, :plan_id, :reservation_id, :guest_id)
     end
