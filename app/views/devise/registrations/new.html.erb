@@ -26,11 +26,16 @@
             <%= f.submit "Sign up", class: "btn btn-normal btn-block" %>
           </div>
         <% end %>
-
-        <hr/>
+        <br>
         <%= render "devise/sessions/test_login" %>
-        <%= link_to "facebook", user_facebook_omniauth_authorize_path  %>
-        <%= link_to "Google", user_google_oauth2_omniauth_authorize_path  %>
+        <div class="row row-space-2">
+          <div class="col-md-6">
+            <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: 'btn btn-facebook btn-block'  %>
+          </div>
+          <div class="col-md-6">
+            <%= link_to "Google", user_google_oauth2_omniauth_authorize_path, class: 'btn btn-google btn-block'  %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

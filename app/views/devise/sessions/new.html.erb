@@ -13,23 +13,23 @@
             <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
           </div>
 
-          <div>
-            <% if devise_mapping.rememberable? %>
-              <%= f.check_box :remember_me %> Remember Me
-            <% end %>
-            <span class="pull-right">
-              <%= link_to "Forgot Password", new_user_password_path %>
-            </span>
-          </div>
-          <br/><br/>
+          <br/>
 
           <div class="actions">
             <%= f.submit "Log in", class: "btn btn-normal btn-block" %>
           </div>
         <% end %>
 
-        <hr/>
+        <br/>
         <%= render "devise/sessions/test_login" %>
+        <div class="row row-space-2">
+          <div class="col-md-6">
+            <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: 'btn btn-facebook btn-block'  %>
+          </div>
+          <div class="col-md-6">
+            <%= link_to "Google", user_google_oauth2_omniauth_authorize_path, class: 'btn btn-google btn-block'  %>
+          </div>
+        </div>
       </div>
     </div>
 

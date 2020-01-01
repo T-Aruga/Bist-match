@@ -218,15 +218,26 @@ a {
     }
 
     &.btn-test {
-      border: 1px solid #3B5998;
-      background-color: #3B5998;
+      border: 1px solid #0079ba;
+      background-color: #0079ba;
     }
 
-    &.btn-test:active {
-      outline: none;
-      border-color: #3B5998;
-      background-color: #3B5998;
+        &:active {
+          outline: none;
+          border-color: #0079ba;
+          background-color: #0079ba;
+        }
+
+    &.btn-google {
+      border: 1px solid #dd4b39;
+      background-color: #dd4b39;
     }
+
+        &:active {
+          outline: none;
+          border-color: #dd4b39;
+          background-color: #dd4b39;
+        }
 
     &.btn-form {
       border: 1px solid #00B3C4;
