@@ -29,6 +29,7 @@ gem "refile-mini_magick"
 gem 'cocoon'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 
 gem 'geocoder', '~> 1.4'
 gem 'counter_culture', '~> 1.8'
