@@ -10,7 +10,7 @@
 
 https://bistmatch.com
 
-* Testuserログインボタンからそのままログイン可能です。
+Testuserログインボタンからそのままログイン可能です。
 
 ## 使用技術
 
@@ -38,3 +38,21 @@ https://bistmatch.com
 * 通知機能
 * 収益確認機能(Chartkick)
 * Line風UIのチャット・DM機能（ActionCable）
+
+## 使用画面サンプル
+<br/>
+
+### トップ画面
+[![Image from Gyazo](https://i.gyazo.com/f6671728a38581ce8d99291cb668d891.jpg)](https://gyazo.com/f6671728a38581ce8d99291cb668d891)
+
+### 食事プラン詳細画面(一部)
+[![Image from Gyazo](https://i.gyazo.com/dbbc2d9cf06ae363e4455c5b435c41ae.jpg)](https://gyazo.com/dbbc2d9cf06ae363e4455c5b435c41ae)
+
+### チャット機能
+[![Image from Gyazo](https://i.gyazo.com/dbede48639961c5ae5d7546c9f27921c.png)](https://gyazo.com/dbede48639961c5ae5d7546c9f27921c)
+
+### 検索機能
+[![Image from Gyazo](https://i.gyazo.com/d2ed66b236f51fe4aacf47bb6901419f.jpg)](https://gyazo.com/d2ed66b236f51fe4aacf47bb6901419f)
+
+### レビュー機能
+[![Image from Gyazo](https://i.gyazo.com/a1018daa8f63f8e8508e73d09ad68aea.png)](https://gyazo.com/a1018daa8f63f8e8508e73d09ad68aea)
