@@ -19,7 +19,7 @@
               <div id="stars_<%= reservation.id %>"></div>
             </div>
             <div class="form-group">
-              <%= f.text_area :comment, rows: 3, class: "form-control" %>
+              <%= f.text_area :comment, rows: 3, class: "form-control", required: true, maxlength:400 %>
             </div>
 
             <%= f.hidden_field :plan_id, value: reservation.plan.id %>
@@ -27,7 +27,7 @@
             <%= f.hidden_field :host_id, value: reservation.plan.user.id %>
 
             <div class="text-center">
-              <%= f.submit "レビューを投稿する", class: "btn btn-normal" %>
+              <%= f.submit "レビューを投稿する", class: "btn btn-normal"  %>
             </div>
         <% end %>
       </div>
