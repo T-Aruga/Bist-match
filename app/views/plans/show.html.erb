@@ -19,7 +19,7 @@
         <div class="col-md-8">
           <h1><%= @plan.title %></h1>
           <ul class="cp_tag01">
-            <li><p class="btn-border side-space-1"><%= "募集中" %></p></li>
+            <li><p class="btn-border side-space-1"><%= @plan.status %></p></li>
             <li><a href="#"><%= @plan.jenre.name %></a></li>
             <li><a href="#"><%= @plan.area.name %></a></li>
           </ul>
