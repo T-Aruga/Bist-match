@@ -107,7 +107,11 @@
         <div class="col-md-3">
           <div class="panel panel-default">
             <div class="panel-heading preview">
-              <%= image_tag "#{plan.restaurant.image_url}", size: '200x200'  %>
+              <% if plan.restaurant.image_url.present? %>
+                <%= image_tag "#{plan.restaurant.image_url}", size: '200x200'  %>
+              <% else %>
+                <%= attachment_image_tag plan.photos[0], :image, size: '200x200' %>
+              <% end %>
             </div>
             <div class="panel-body text-adjust">
               <%= link_to plan.title, plan %><br/>

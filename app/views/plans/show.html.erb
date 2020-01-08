@@ -161,14 +161,18 @@
       <!-- NEAR BY PLANS -->
       <div class="row">
         <h3>近くで募集中のプラン</h3><br>
-        <% @plan.restaurant.nearbys(5).each do |rest| %>
+        <% @plan.restaurant.nearbys(3).each do |rest| %>
           <% if Plan.exists?(restaurant_id: rest.id, status: 1) %>
             <% rest.plans.each do |plan| %>
               <div class="col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-heading preview">
                   <%= link_to plan do %>
-                    <%= image_tag "#{rest.image_url}", size: '200x200'  %>
+                    <% if rest.image_url.present? %>
+                      <%= image_tag "#{rest.image_url}", size: '200x200'  %>
+                    <% else %>
+                      <%= attachment_image_tag plan.photos[0], :image, size: '200x200' %>
+                    <% end %>
                   <% end %>
                   </div>
                   <div class="panel-body text-adjust">

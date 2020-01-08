@@ -8,7 +8,7 @@
 
       <div class="panel-body">
         <div class="col-md-offset-2 col-md-4">
-        <% if @restaurant.present? %>
+        <% if @restaurant.present? && @restaurant.image_url.present? %>
           <%= image_tag "#{@restaurant.image_url}", size: '200x200'  %>
         <% else %>
           <%= image_tag 'default_image.png', size: '200x200' %>
@@ -31,6 +31,7 @@
           <br><br>
 
           <%= form_for @plan do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
             <label>タイトル</label>
             <%= f.text_field :title, placeholder: "プランのタイトルを入力...", class: "form-control" %>
             <br>
