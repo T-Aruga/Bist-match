@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: [:payment, :add_card, :exit, :destroy]
+  before_action :set_user, except: [:payment, :add_card]
   before_action :authenticate_user!, except: [:show]
-  before_action :forbid_test_user, only: [:update, :destroy]
-  before_action :correct_user, only: [:profile, :description, :photo_upload, :favorite_store, :update, :destroy]
+  before_action :forbid_test_user, only: [:update, :exit, :destroy]
+  before_action :ensure_correct_user, only: [:profile, :description, :photo_upload, :favorite_store, :update, :destroy]
 
   def show
     @plans = @user.plans
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
     end
 
     # 正しいユーザーか確認する
-    def correct_user
+    def ensure_correct_user
       redirect_to root_path, alert: "権限がありません.." unless current_user.id == @user.id
     end
 
