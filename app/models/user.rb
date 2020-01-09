@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   validates :fullname, presence: true, length: { maximum: 50 }
 
-  # omniauthのコールバック時に呼ばれるメソッド
+  # omniauthのコールバック時に呼ばれる
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.fullname = auth.info.name

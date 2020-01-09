@@ -10,7 +10,7 @@ class Message < ApplicationRecord
   end
 
   private
-
+    # メッセージ送信時に相手に通知する
     def create_notification
       if self.conversation.sender_id == self.user_id
         sender = User.find(self.conversation.sender_id)

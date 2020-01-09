@@ -13,7 +13,7 @@ class Reservation < ApplicationRecord
   }
 
   private
-
+    # 参加申請時に、ホストに通知を送る
     def create_notification
       guest = User.find(self.user_id)
       notification = Notification.create(content: "#{guest.fullname}さんから参加申請がありました", user_id: self.plan.user_id)

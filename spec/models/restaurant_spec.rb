@@ -1,9 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Notification, type: :model do
+RSpec.describe Restaurant, type: :model do
   describe 'バリデーションのテスト' do
 
-    context 'アソシエーション' do
+    describe 'アソシエーション' do
+      it "Planモデルを多数持っている" do
+        is_expected.to have_many(:plans)
+      end
+
       it "Userモデルに属している" do
         is_expected.to belong_to(:user)
       end
