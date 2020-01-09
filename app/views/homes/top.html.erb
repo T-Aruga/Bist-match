@@ -10,10 +10,10 @@
         <%= text_field_tag :search, params[:search], placeholder: "興味のある場所を入力", class: "form-control", required: true %>
       </div>
       <div class="col-md-3">
-        <%= text_field_tag :plan_date, params[:plan_date], placeholder: "プラン開催日", class: "form-control datepicker" %>
+        <%= text_field_tag :plan_date, params[:plan_date], placeholder: "プラン開催日", readonly: true, class: "form-control datepicker" %>
       </div>
       <div class="col-md-3">
-        <%= text_field_tag :period_time, params[:period_time], placeholder: "時間帯", class: "form-control period-t" %>
+        <%= select_tag :period_time, options_for_select({"朝": "朝", "ランチ": "ランチタイム", "夕方・夜": "夕方・夜"}), prompt: '時間帯', class: 'form-control' %>
       </div>
     </div>
     <br/><br/>
