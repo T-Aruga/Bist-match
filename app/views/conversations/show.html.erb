@@ -42,7 +42,7 @@
                       <%= f.hidden_field :recipient_id, value: @user.id %>
                       <div class="form-group chatbox">
                         <div class="control">
-                            <%= f.text_field :content, class: 'message-box', placeholder: "メッセージを入力..." %>
+                            <%= f.text_field :content, class: 'message-box', placeholder: "メッセージを入力...", required: true, maxlength:200 %>
                             <%= f.submit "送信", class: "btn btn-form chat-submit" %>
                         </div>
                       </div>

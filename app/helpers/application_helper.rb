@@ -7,4 +7,5 @@ module ApplicationHelper
       @notifications[0].user.unread
     end
   end
+
 end

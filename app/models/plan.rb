@@ -17,6 +17,8 @@ class Plan < ApplicationRecord
 
   geocoded_by :address
 
+  validates :title, presence: true, length: { maximum: 40 }
+
   # 募集中の利用可能なプランを取得
   scope :available, -> {
       where("status = ? AND active = ?", 1, true)
@@ -37,6 +39,13 @@ class Plan < ApplicationRecord
   def good?(user)
     user_ids = favorites.pluck(:user_id)
     user_ids.include?(user.id)
+  end
+
+  # プランに必要なrestaurantの情報を追加する
+  def add_restinfo(rest)
+    self.restaurant_id = rest.id
+    self.latitude = rest.latitude
+    self.longitude = rest.longitude
   end
 
   # レビューの平均点の取得

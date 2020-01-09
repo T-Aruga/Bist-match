@@ -20,7 +20,11 @@
                 <%= plan.plan_date %>
               </div>
               <div class="col-md-2">
-                <%= image_tag "#{plan.restaurant.image_url}", size: '100x100' %>
+                <% if plan.restaurant.image_url.present? %>
+                  <%= image_tag "#{plan.restaurant.image_url}", size: '100x100'  %>
+                <% else %>
+                  <%= attachment_image_tag plan.photos[0], :image, :fill, 100, 100 %>
+                <% end %>
               </div>
               <div class="col-md-5">
                 <h4><%= plan.title %></h4>

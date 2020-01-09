@@ -15,9 +15,7 @@ class PlansController < ApplicationController
 
   def create
     @plan = current_user.plans.build(plan_params)
-    @plan.restaurant_id = @restaurant.id
-    @plan.latitude = @restaurant.latitude
-    @plan.longitude = @restaurant.longitude
+    @plan.add_restinfo(@restaurant)
     if @plan.save
       redirect_to listing_plan_path(@plan), notice: "プランを新規作成しました！"
     else
@@ -68,6 +66,9 @@ class PlansController < ApplicationController
 
     def set_rest
       @restaurant = Restaurant.where(user_id: current_user.id).last
+      if @restaurant.nil?
+        redirect_to search_gnabi_path, notice: "店舗情報をまず登録してください"
+      end
     end
 
     # 正しいユーザーか確認する

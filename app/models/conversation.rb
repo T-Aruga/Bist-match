@@ -14,4 +14,11 @@ class Conversation < ApplicationRecord
       return Message.new updated_at: Time.now
     end
   end
+  # 現在チャット中のトークルームの取得
+  scope :between, -> (user_A, user_B) {
+    where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)",
+              user_A, user_B,
+              user_B, user_A
+          )
+  }
 end
