@@ -5,11 +5,9 @@ class ConversationsController < ApplicationController
 
   def show
       @user = User.find(params[:id])
+      # 現在のトークルームの取得
+      @conversation = Conversation.between(current_user.id, params[:id]).first
 
-      @conversation = Conversation.where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)",
-                                              current_user.id, params[:id],
-                                              params[:id], current_user.id
-                                          ).first
       if !@conversation.present?
           redirect_to conversations_path, alert: "無効なアクセスです"
       else
