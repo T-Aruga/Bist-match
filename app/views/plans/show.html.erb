@@ -25,7 +25,14 @@
           </ul>
           <!-- Favorite icon -->
           <div class = "plan_favorite">
-            <%= render "favorites/favorite", plan: @plan %>
+            <% if user_signed_in? %>
+              <%= render "favorites/favorite", plan: @plan %>
+            <% else %>
+              <span class="favo">
+                <i class="far fa-heart fa-2x" aria-hidden="true" style="color: red"></i>
+                <%= content_tag :span, "#{@plan.favorites_count}", style: 'color: red' %>
+              </span>
+            <% end %>
           </div>
 
         </div>

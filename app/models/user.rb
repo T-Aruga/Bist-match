@@ -22,7 +22,7 @@ class User < ApplicationRecord
   enum sex: { 男性: 0, 女性: 1 }
 
 
-  validates :fullname, presence: true, length: { maximum: 50 }
+  validates :fullname, presence: true, length: { maximum: 30 }
 
   # omniauthのコールバック時に呼ばれる
   def self.from_omniauth(auth)
@@ -33,7 +33,7 @@ class User < ApplicationRecord
     end
   end
 
-
+  # プロフィールの項目が入力されているか確認する
   def is_ready_user?
     !self.active && !self.fullname.blank? && !self.email.blank? && !self.description.blank? && !self.image_id.blank? && !self.favorite_store.blank? && !self.jenre_id.blank?
   end
