@@ -1,13 +1,13 @@
 # FactoryBot.define do
-#   factory :guest_review, class: Review do
+#   factory :review, aliases: [:GuestReview, :HostReview] do
 #     comment { 'aaa' }
 #     star { 1 }
 #     plan_id { 1 }
 #     reservation_id { 1 }
 #     guest_id { 1 }
 #     host_id { 2 }
-#     association :host
 #     association :guest
+#     association :host
 #     type { GuestReview }
 #   end
 

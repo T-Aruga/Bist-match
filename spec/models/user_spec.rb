@@ -48,7 +48,7 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
 
         registered_user = User.find(1);
         expect(registered_user.fullname).to eq('Alice Stark')
-        expect(registered_user.email).to eq('example@test.com')
+        expect(registered_user.email).to eq('tester1@example.com')
         expect(registered_user.phone_number).to eq('11144448888')
         expect(registered_user.description).to eq('sample text')
         expect(registered_user.sex).to eq("女性")
