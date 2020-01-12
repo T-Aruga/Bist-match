@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
         redirect_to request.referrer, alert: "自分自身にメッセージは送れません"
       end
 
-      # メッセージ追加対象のトークルームの取得
+      # 現在選択中ののトークルームの取得
       conversation = Conversation.between(current_user.id, recipient_id).first
 
       # トークルームが存在しなければ、新たに作成する

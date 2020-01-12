@@ -47,6 +47,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
   gem 'rails-controller-testing'
   gem 'spring-commands-rspec'
 end

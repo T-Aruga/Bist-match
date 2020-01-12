@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Notification, type: :model do
+RSpec.describe GuestReview, type: :model do
   describe 'バリデーションのテスト' do
 
-    context 'アソシエーション' do
+    describe 'アソシエーション' do
       it "Userモデルに属している" do
-        is_expected.to belong_to(:user)
+        is_expected.to belong_to(:guest).class_name('User')
       end
     end
 

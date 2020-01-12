@@ -4,7 +4,6 @@ class Restaurant < ApplicationRecord
   belongs_to :user
 
   geocoded_by :address
-  # after_validation :geocode, if: :address_present?
 
   validates :name, presence: true
   validates :latitude, presence: true
