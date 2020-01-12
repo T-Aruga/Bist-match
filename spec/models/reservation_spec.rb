@@ -33,16 +33,16 @@ RSpec.describe Reservation, type: :model do
   describe 'scopes' do
     describe '#current_week_revenue' do
       it '今週の収入対象の参加予約を返す' do
-        @reservation = FactoryBot.create(:reservation, :approved)
-        expect(Reservation.current_week_revenue(@user)).to include(@reservation)
+        reservation = FactoryBot.create(:reservation, :approved)
+        expect(Reservation.current_week_revenue(@user)).to include(reservation)
       end
     end
   end
 
   describe '#create_notification' do
-    it '通知データが正しく登録できること' do
-      @reservation = FactoryBot.create(:reservation)
-      expect(@reservation.send(:create_notification)).to be_valid
+    it '通知が正しく登録できること' do
+      reservation = FactoryBot.create(:reservation)
+      expect(reservation.send(:create_notification)).to be_valid
     end
   end
 end
