@@ -176,23 +176,4 @@ RSpec.describe Plan, type: :model do
       expect(@plan).to be_valid
     end
   end
-
-  # describe '#average_rating' do
-
-  #   before do
-  #     FactoryBot.create(:user)
-  #     FactoryBot.create(:user)
-  #     FactoryBot.create(:user)
-  #     FactoryBot.create(:area)
-  #     FactoryBot.create(:jenre)
-  #     FactoryBot.create(:restaurant)
-  #     @plan = FactoryBot.create(:plan)
-  #     FactoryBot.create(:review, :max_rating)
-  #     FactoryBot.create(:review, :other_review)
-  #   end
-
-  #   it 'レビューの平均点が正しく返される' do
-  #     expect(@plan.average_rating).to eq(3)
-  #   end
-  # end
 end
