@@ -11,5 +11,9 @@ FactoryBot.define do
     pc_url { 'https://r.gnavi.co.jp' }
     image_url { 'https://uds.gnst.jp/rest/img/9f2jv1wm0000/t_003o.jpg' }
     user_id { 1 }
+
+    trait :no_name do
+      name {}
+    end
   end
 end
