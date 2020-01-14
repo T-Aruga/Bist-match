@@ -34,7 +34,6 @@ class HomesController < ApplicationController
     end
 
     # 時間帯（ランチなど）による検索
-
     if params[:period_time] && params[:period_time] != ""
       period_time = params[:period_time]
       @arrPlans = @arrPlans.map{|plan| plan if plan.period_time == period_time }.compact
@@ -63,7 +62,6 @@ class HomesController < ApplicationController
 
     # 検索条件に当てはまらないプランを検索結果から除外する
     # プラン開催日による検索
-
     if params[:plan_date] && params[:plan_date] != ""
       plan_date = Date.parse(params[:plan_date])
       @arrPlans = @arrPlans.map{|plan| plan if plan.plan_date == plan_date }.compact
