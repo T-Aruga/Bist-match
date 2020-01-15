@@ -8,6 +8,5 @@ RSpec.describe GuestReview, type: :model do
         is_expected.to belong_to(:guest).class_name('User')
       end
     end
-
   end
 end

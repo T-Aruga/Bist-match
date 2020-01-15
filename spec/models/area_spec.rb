@@ -9,6 +9,5 @@ RSpec.describe Area, type: :model do
         is_expected.to have_many(:plans)
       end
     end
-
   end
 end

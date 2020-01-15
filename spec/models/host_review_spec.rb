@@ -8,6 +8,5 @@ RSpec.describe HostReview, type: :model do
         is_expected.to belong_to(:host).class_name('User')
       end
     end
-
   end
 end

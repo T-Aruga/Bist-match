@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Plan, type: :model do
+
+  before do
+    @user = FactoryBot.create(:user)
+    FactoryBot.create(:area)
+    FactoryBot.create(:jenre)
+    @restaurant = FactoryBot.create(:restaurant)
+  end
+
   describe 'バリデーションのテスト' do
 
     describe 'アソシエーション' do
@@ -41,10 +49,6 @@ RSpec.describe Plan, type: :model do
   describe '食事プランの登録' do
     context 'データが正しく保存できる場合' do
       it '正しく登録できること' do
-        FactoryBot.create(:user)
-        FactoryBot.create(:area)
-        FactoryBot.create(:jenre)
-        FactoryBot.create(:restaurant)
         plan = FactoryBot.build(:plan)
         expect(plan).to be_valid
         plan.save
@@ -91,10 +95,6 @@ RSpec.describe Plan, type: :model do
   describe '#is_ready_plan?' do
 
     before do
-      FactoryBot.create(:user)
-      FactoryBot.create(:area)
-      FactoryBot.create(:jenre)
-      FactoryBot.create(:restaurant)
       @plan = FactoryBot.create(:plan)
       FactoryBot.create(:photo)
     end
@@ -112,10 +112,6 @@ RSpec.describe Plan, type: :model do
   describe 'scopes' do
     describe '#available' do
       before do
-        FactoryBot.create(:user)
-        FactoryBot.create(:area)
-        FactoryBot.create(:jenre)
-        FactoryBot.create(:restaurant)
         @plan = FactoryBot.create(:plan, :true_active)
         @other_plan = FactoryBot.create(:plan, :false_active)
         FactoryBot.create(:photo)
@@ -134,10 +130,6 @@ RSpec.describe Plan, type: :model do
   describe '#favorite_methods' do
 
     before do
-      @user = FactoryBot.create(:user)
-      FactoryBot.create(:area)
-      FactoryBot.create(:jenre)
-      FactoryBot.create(:restaurant)
       @plan = FactoryBot.create(:plan)
       FactoryBot.create(:favorite)
     end
@@ -162,13 +154,6 @@ RSpec.describe Plan, type: :model do
   end
 
   describe '#add_restinfo' do
-
-    before do
-      FactoryBot.create(:user)
-      FactoryBot.create(:area)
-      FactoryBot.create(:jenre)
-      @restaurant = FactoryBot.create(:restaurant)
-    end
 
     it 'プランに飲食店情報が追加される' do
       @plan = FactoryBot.build(:plan, :no_restinfo)

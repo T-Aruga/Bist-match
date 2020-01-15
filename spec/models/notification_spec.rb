@@ -8,6 +8,5 @@ RSpec.describe Notification, type: :model do
         is_expected.to belong_to(:user)
       end
     end
-
   end
 end

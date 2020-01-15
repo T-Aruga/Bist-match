@@ -12,6 +12,5 @@ RSpec.describe Favorite, type: :model do
         is_expected.to belong_to(:plan)
       end
     end
-
   end
 end
