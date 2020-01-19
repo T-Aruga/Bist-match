@@ -45,18 +45,11 @@ gem 'cancancan', '~> 2.0'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
-  gem 'spring-commands-rspec'
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem "better_errors"
-  gem "binding_of_caller"
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener_web'
@@ -69,6 +62,9 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'shoulda-matchers'
 end
 
 group :production do

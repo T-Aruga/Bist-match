@@ -1,6 +1,6 @@
 FactoryBot.define do
 
-  factory :user, aliases: [:host, :guest] do
+  factory :user  do
     fullname { 'Alice Stark' }
     sequence(:email) { |n| "tester#{n}@example.com" }
     password { 'password' }
