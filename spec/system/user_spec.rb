@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'ユーザー認証のテスト' do
-  describe 'ユーザー新規登録' do
+describe 'User認証のテスト' do
+  describe 'User新規登録' do
     before do
       visit new_user_registration_path
     end
@@ -25,7 +25,7 @@ describe 'ユーザー認証のテスト' do
     end
   end
 
-  describe 'ユーザーログイン' do
+  describe 'Userログイン' do
     before do
       @user = FactoryBot.create(:user, :active_true)
       visit new_user_session_path
@@ -50,123 +50,85 @@ describe 'ユーザー認証のテスト' do
   end
 end
 
-# RSpec.feature "Homeページ、サインアップ、ログイン、ログアウトに関するテスト", type: :system do
-#   before do
-#     @user = FactoryBot.create(:user, :active_true)
-#   end
+describe 'Userのテスト' do
 
-#   feature "サインアップの確認" do
-#     before do
-#       visit new_user_registration_path
-#       find_field('user[fullname]').set("sample taro")
-#       find_field('user[email]').set("aa@aa")
-#       find_field('user[password]').set("pppppp")
-#     end
+  before do
+    @user = FactoryBot.create(:user)
+    @other_user = FactoryBot.create(:user)
+    FactoryBot.create(:area)
+    FactoryBot.create(:jenre)
+    FactoryBot.create(:restaurant)
+    @plan = FactoryBot.create(:plan)
+    visit new_user_session_path
+    fill_in 'user[email]', with: @user.email
+    fill_in 'user[password]', with: @user.password
+    click_button 'Log in'
+  end
 
-#     scenario "正しくサインアップできているか" do
-#       expect {
-#         find("input[fullname='commit']").click
-#       }.to change(User, :count).by(1)
-#     end
+  describe '編集のテスト' do
+    context '自分の編集画面への遷移' do
+      it '遷移できる' do
+        visit profile_user_path(@user)
+        expect(current_path).to eq('/users/' + @user.id.to_s + '/profile')
+      end
+    end
+    context '他人の編集画面への遷移' do
+      it '遷移できない' do
+        visit profile_user_path(@other_user)
+        expect(current_path).to eq('/')
+      end
+    end
 
-#     scenario "リダイレクト先は正しいか" do
-#       find("input[name='commit']").click
-#       expect(page).to have_current_path profile_user_path(User.last)
-#     end
+    context '表示の確認' do
+      before do
+        visit profile_user_path(@user)
+      end
+      it 'フォームに自分の名前が表示される' do
+        expect(page).to have_field 'user[fullname]', with: @user.fullname
+      end
+      it 'フォームに自分のメールアドレスが表示される' do
+        expect(page).to have_field 'user[email]', with: @user.email
+      end
+      it 'フォームに自分の電話番号が表示される' do
+        expect(page).to have_field 'user[phone_number]', with: @user.phone_number
+      end
+      it 'フォームに自分の性別が表示される' do
+        expect(page).to have_field 'user[sex]', with: @user.sex
+      end
+      it 'フォームに自分の年齢が表示される' do
+        expect(page).to have_field 'user[age]', with: @user.age
+      end
+      it 'フォームに自分の職業が表示される' do
+        expect(page).to have_field 'user[job]', with: @user.job
+      end
+      it '編集に成功する' do
+        click_button '保存'
+        expect(page).to have_content 'プロフィールを公開'
+        expect(current_path).to eq('/users/' + @user.id.to_s)
+      end
+      it '編集に失敗する' do
+        fill_in 'user[fullname]', with: ''
+        click_button '保存'
+        expect(current_path).to eq('/users/' + @user.id.to_s + '/profile')
+      end
+    end
+  end
 
-#     scenario "サクセスメッセージは正しく表示されるか" do
-#       find("input[name='commit']").click
-#       expect(page).to have_content "アカウント登録が完了しました"
-#     end
-#   end
-
-#   feature "有効でない内容でのサインアップの確認" do
-#     before do
-#       visit new_user_registration_path
-#       find_field('user[fullname]').set(nil)
-#       find_field('user[email]').set("bb@bb")
-#       find_field('user[password]').set("pppppp")
-#       find("input[name='commit']").click
-#     end
-#     scenario "エラーメッセージは正しく表示されるか" do
-#       expect(page).to have_content "入力されていません"
-#     end
-#   end
-
-#   feature "ログインの確認" do
-#     before do
-#       visit new_user_session_path
-#       find_field('user[email]').set(@user.email)
-#       find_field('user[password]').set(@user.password)
-#       find("input[name='commit']").click
-#     end
-
-#     scenario "正しくログインして、リダイレクトされているか" do
-#       expect(page).to have_current_path root_path
-#     end
-
-#     scenario "サクセスメッセージは正しく表示されるか" do
-#       expect(page).to have_content "ログインしました"
-#     end
-#   end
-
-#   feature "有効でない内容でのログインの確認" do
-#     before do
-#       visit new_user_session_path
-#       find_field('user[email]').set(nil)
-#       find_field('user[password]').set(nil)
-#       find("input[name='commit']").click
-#     end
-#     scenario "リダイレクト先は正しいか" do
-#       expect(page).to have_current_path new_user_session_path
-#     end
-#   end
-
-#   feature "ログアウトの確認" do
-#     before do
-#       login(@user)
-#       visit root_path
-#       all("a[data-method='delete'][href='/users/sign_out']")[0].click
-#      # click_on "logout"
-#     end
-#     scenario "正しくログアウトして、リダイレクトされているか" do
-#       expect(page).to have_current_path "/"
-#     end
-#     scenario "サクセスメッセージは正しく表示されるか" do
-#       expect(page).to have_content "ログアウトしました"
-#     end
-#   end
-
-#   feature "ヘッダーのリンクの確認" do
-#     scenario "ログイン時" do
-#       login(@user)
-#       visit root_path
-#       expect(page).to have_link "",href: dashboard_path
-#       expect(page).to have_link "",href: new_plan_path
-#       expect(page).to have_link "",href: plans_path
-#       expect(page).to have_link "",href: your_reservation_path
-#       expect(page).to have_link "",href: your_entry_path
-#       expect(page).to have_link "",href: user_path(@user)
-#       expect(page).to have_link "",href: profile_user_path(@user)
-#       expect(page).to have_link "",href: conversations_path
-#       expect(page).to have_link "",href: revenues_path
-#       expect(page).to have_link "",href: payment_method_path
-#       expect(page).to have_link "",href: exit_user_path(@user)
-#       expect(page).to have_link "",href: destroy_user_session_path
-#     end
-
-#     scenario "ログアウト時" do
-#       visit root_path
-#       expect(page).to have_link "",href: new_user_session_path
-#       expect(page).to have_link "",href: new_user_registration_path
-#       expect(page).to have_link "",href: about_path
-#     end
-#   end
-# end
-
-# RSpec.feature 'Home', type: :system do
-#   scenario 'shows greeting' do
-#     visit root_path
-#     expect(page).to have_content 'Hello World!'
-#   end
-# end
+  describe 'マイページのテスト' do
+    before do
+      visit user_path(@user)
+    end
+    context '表示の確認' do
+      it '自分のマイページにはメッセージボタンが表示されない' do
+        expect(page).to_not have_content('メッセージを送る')
+      end
+      it '他ユーザーのマイページにはメッセージボタンが表示される' do
+        visit user_path(@other_user)
+        expect(page).to have_content('メッセージを送る')
+      end
+      it 'プラン一覧のplanのリンク先が正しい' do
+        expect(page).to have_link @plan.title, href: plan_path(@plan)
+      end
+    end
+  end
+end

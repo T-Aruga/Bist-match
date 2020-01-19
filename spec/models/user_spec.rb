@@ -48,14 +48,13 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
 
         registered_user = User.find(1);
         expect(registered_user.fullname).to eq('Alice Stark')
-        expect(registered_user.email).to eq('tester1@example.com')
+        expect(registered_user.email).to eq('tester48@example.com')
         expect(registered_user.phone_number).to eq('11144448888')
         expect(registered_user.description).to eq('sample text')
         expect(registered_user.sex).to eq("女性")
         expect(registered_user.age).to eq(24)
         expect(registered_user.favorite_store).to eq('マクドナルド')
         expect(registered_user.job).to eq('会社員')
-        expect(registered_user.jenre_id).to eq(2)
       end
 
       it '画像データの保存ができること' do

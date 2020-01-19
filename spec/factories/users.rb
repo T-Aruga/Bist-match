@@ -11,7 +11,7 @@ FactoryBot.define do
     favorite_store { 'マクドナルド' }
     job { '会社員' }
     image_id { 1 }
-    jenre_id { 2 }
+    jenre_id { 1 }
 
     trait :too_long_name do
       fullname {Faker::Lorem.characters(number: 31)}
