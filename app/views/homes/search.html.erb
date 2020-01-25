@@ -163,14 +163,14 @@
 
 <script>
   $(function() {
-    $("#q_price_gteq").val('300');
-    $("#q_price_lteq").val('1000');
+    $("#q_price_gteq").val('100');
+    $("#q_price_lteq").val('3000');
 
     $("#slider-range").slider({
       range: true,
       min: 0,
       max: 5000,
-      values: [100, 3000],
+      values: [300, 1000],
       slide: function(event, ui) {
         $("#q_price_gteq").val(ui.values[0]);
         $("#q_price_lteq").val(ui.values[1]);

@@ -36,6 +36,10 @@ FactoryBot.define do
       longitude {}
     end
 
+    trait :other_user do
+      user_id { 2 }
+    end
+
     trait :true_active do
       active { 1 }
     end
