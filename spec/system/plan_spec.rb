@@ -71,5 +71,38 @@ RSpec.describe "Plans", type: :system do
         }.to change{ @plan.favorites.count }.by(0)
       end
     end
+
+    describe 'プランの予約のテスト' do
+      it 'プランに参加申請が出来る' do
+        visit plan_path(@other_plan)
+        fill_in 'reservation[price]', with: @other_plan.price
+        click_button 'このプランに参加する'
+        expect(page).to have_content 'プランに参加希望をしました'
+      end
+
+      it '参加申請済みプランへ予約が重複してできない' do
+        FactoryBot.create(:reservation, :other_plan)
+        visit plan_path(@other_plan)
+        fill_in 'reservation[price]', with: @other_plan.price
+        click_button 'このプランに参加する'
+        expect(page).to have_content 'このプランに参加希望は出せません'
+      end
+
+      it '料金が最低金額以下の場合、参加申請ができない' do
+        visit plan_path(@other_plan)
+        fill_in 'reservation[price]', with: 10
+        click_button 'このプランに参加する'
+        expect(page).to have_content 'ホストへの支払額が最低金額を満たしていません'
+      end
+
+      it 'クレカ登録がされていないと参加申請ができない' do
+        @user.update(stripe_id: '')
+        visit plan_path(@other_plan)
+        fill_in 'reservation[price]', with: @other_plan.price
+        click_button 'このプランに参加する'
+        expect(page).to have_content 'クレジットカードを登録して下さい'
+        expect(current_path).to eq('/payment_method')
+      end
+    end
   end
 end

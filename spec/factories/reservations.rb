@@ -7,5 +7,9 @@ FactoryBot.define do
     trait :approved do
       status { 2 }
     end
+
+    trait :other_plan do
+      plan_id { 2 }
+    end
   end
 end
