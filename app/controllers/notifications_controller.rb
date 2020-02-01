@@ -6,5 +6,4 @@ class NotificationsController < ApplicationController
     current_user.save
     @notifications = current_user.notifications.reverse
   end
-
 end

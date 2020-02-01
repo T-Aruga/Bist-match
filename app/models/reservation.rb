@@ -6,17 +6,18 @@ class Reservation < ApplicationRecord
   belongs_to :plan
   belongs_to :user
 
-  scope :current_week_revenue, -> (user) {
+  scope :current_week_revenue, lambda { |user|
     joins(:plan)
-    .where("plans.user_id = ? AND reservations.updated_at >= ? AND reservations.status = ?", user.id, 1.week.ago, 2)
-    .order(updated_at: :asc)
+      .where('plans.user_id = ? AND reservations.updated_at >= ? AND reservations.status = ?', user.id, 1.week.ago, 2)
+      .order(updated_at: :asc)
   }
 
   private
-    # 参加申請時に、ホストに通知を送る
-    def create_notification
-      guest = User.find(self.user_id)
-      notification = Notification.create(content: "#{guest.fullname}さんから参加申請がありました", user_id: self.plan.user_id)
-      notification.user.increment!(:unread)
-    end
+
+  # 参加申請時に、ホストに通知を送る
+  def create_notification
+    guest = User.find(user_id)
+    notification = Notification.create(content: "#{guest.fullname}さんから参加申請がありました", user_id: plan.user_id)
+    notification.user.increment!(:unread)
+  end
 end

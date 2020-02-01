@@ -1,7 +1,6 @@
 class Plan < ApplicationRecord
-
   enum status: { 募集終了: 0, 募集中: 1 }
-  enum period_time: { 朝: 0, ランチタイム: 1, 夕方・夜:2 }
+  enum period_time: { 朝: 0, ランチタイム: 1, 夕方・夜: 2 }
 
   has_many :reservations, dependent: :destroy
   has_many :photos, dependent: :destroy
@@ -22,10 +21,9 @@ class Plan < ApplicationRecord
   validates :longitude, presence: true
 
   # 募集中の利用可能なプランを取得
-  scope :available, -> {
-      where("status = ? AND active = ?", 1, true)
+  scope :available, lambda {
+    where('status = ? AND active = ?', 1, true)
   }
-
 
   # プランにいいね
   def good(user)
@@ -57,9 +55,9 @@ class Plan < ApplicationRecord
 
   # プランの入力情報があるか確認
   def is_ready_plan?
-    !self.active && !self.price.blank? && !self.member.blank? && !self.jenre_id.blank? && !self.status.blank? && !self.area_id.blank? &&
-    !self.restaurant.name.blank? && !self.restaurant.address.blank? && !self.restaurant.line.blank? && !self.restaurant.station.blank? &&
-    !self.restaurant.walk.blank? && !self.summary.blank? && !self.title.blank? && !self.requirement.blank? && !self.photos.blank? &&
-    !self.plan_date.blank? && !self.start_time.blank? && !self.end_time.blank? && !self.deadline.blank?
+    !active && price.present? && member.present? && jenre_id.present? && status.present? && area_id.present? &&
+      restaurant.name.present? && restaurant.address.present? && restaurant.line.present? && restaurant.station.present? &&
+      restaurant.walk.present? && summary.present? && title.present? && requirement.present? && photos.present? &&
+      plan_date.present? && start_time.present? && end_time.present? && deadline.present?
   end
 end
