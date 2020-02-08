@@ -29,17 +29,13 @@ class HomesController < ApplicationController
 
     if params[:plan_date] && params[:plan_date] != ''
       plan_date = Date.parse(params[:plan_date])
-      @arrPlans = @arrPlans.map do |plan|
-        plan if plan.plan_date == plan_date
-      end                  .compact
+      @arrPlans = @arrPlans.map{ |plan| plan if plan.plan_date == plan_date }.compact
     end
 
     # 時間帯（ランチなど）による検索
     if params[:period_time] && params[:period_time] != ''
       period_time = params[:period_time]
-      @arrPlans = @arrPlans.map do |plan|
-        plan if plan.period_time == period_time
-      end                  .compact
+      @arrPlans = @arrPlans.map{ |plan| plan if plan.period_time == period_time }.compact
     end
   end
 
@@ -67,9 +63,7 @@ class HomesController < ApplicationController
     # プラン開催日による検索
     if params[:plan_date] && params[:plan_date] != ''
       plan_date = Date.parse(params[:plan_date])
-      @arrPlans = @arrPlans.map do |plan|
-        plan if plan.plan_date == plan_date
-      end                  .compact
+      @arrPlans = @arrPlans.map{ |plan| plan if plan.plan_date == plan_date }.compact
     end
   end
 end
