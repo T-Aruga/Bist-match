@@ -37,7 +37,7 @@ gem 'geocoder', '~> 1.4'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 
 gem 'cancancan', '~> 2.0'
-gem 'chartkick', '~> 2.2.4'
+gem 'chartkick', '~> 3.3.0'
 gem 'rails-assets-card', source: 'https://rails-assets.org'
 gem 'rails_admin', '~> 2.0.0'
 gem 'stripe', '~> 3.0.0'
