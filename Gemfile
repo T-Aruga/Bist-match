@@ -69,6 +69,11 @@ group :test do
   gem 'webdrivers'
 end
 
+group :tools do
+  gem 'squasher', '>= 0.6.0'
+  gem 'capistrano'
+end
+
 group :production do
   gem 'mysql2'
 end
