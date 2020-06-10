@@ -32,7 +32,7 @@ gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 
 gem 'counter_culture', '~> 1.8'
-gem 'geocoder', '~> 1.4'
+gem 'geocoder', '~> 1.6'
 
 gem 'ransack', github: 'activerecord-hackery/ransack'
 
