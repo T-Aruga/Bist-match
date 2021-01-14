@@ -39,7 +39,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'cancancan', '~> 2.0'
 gem 'chartkick', '~> 2.2.4'
 gem 'rails-assets-card', source: 'https://rails-assets.org'
-gem 'rails_admin', '~> 2.0.0'
+gem 'rails_admin', '~> 2.0.2'
 gem 'stripe', '~> 3.0.0'
 
 group :development, :test do
